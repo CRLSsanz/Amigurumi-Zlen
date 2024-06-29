@@ -1,3 +1,6 @@
+"use client";
+import { useState } from "react";
+
 const BDAmigurumi = [
   {
     name: "Mono y su Banana Amigurumi",
@@ -26,6 +29,8 @@ const BDAmigurumi = [
 ];
 
 export default function Home() {
+  const [showCar, setShowCar] = useState(false);
+
   return (
     <main className="w-full bg-gray-100 flex min-h-screen flex-col items-center">
       {/** NAVBAR */}
@@ -51,10 +56,41 @@ export default function Home() {
 
         {/** LINK */}
         <ul className="w-full p-10">
-          <li className="py-2 border-b border-gray-300">Amigurumi</li>
-          <li className="py-2 border-b border-gray-300">Nuevos disegnos</li>
-          <li className="py-2 border-b border-gray-300">Acerca de</li>
-          <li className="py-2 border-b border-gray-300">Contacto</li>
+          <li
+            onClick={() => setShowCar(!showCar)}
+            className="py-3 px-5 border-b border-gray-300 flex flex-row justify-between"
+          >
+            <h1>Amigurumi</h1>
+            <div
+              className={`w-4 h-4 ${showCar ? "-rotate-90" : " rotate-90 "}`}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="size-4"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="m8.25 4.5 7.5 7.5-7.5 7.5"
+                />
+              </svg>
+            </div>
+          </li>
+          <div hidden={!showCar} className="">
+            <li className="py-3 px-10 border-b border-gray-300">· Animales</li>
+            <li className="py-3 px-10 border-b border-gray-300">
+              · Divertidos
+            </li>
+            <li className="py-3 px-10 border-b border-gray-300">· Muñecos</li>
+            <li className="py-3 px-10 border-b border-gray-300">· Pokemon</li>
+          </div>
+          <li className="py-3 px-5 border-b border-gray-300">Nuevos diseños</li>
+          <li className="py-3 px-5 border-b border-gray-300">Acerca de</li>
+          <li className="py-3 px-5 border-b border-gray-300">Contacto</li>
         </ul>
       </div>
 
@@ -100,31 +136,14 @@ export default function Home() {
         ))}
       </div>
 
-      {/** CARRITO */}
-      <div className="w-full fixed bottom-2 px-2 flex flex-row justify-between">
-        <div className="shadow-md bg-white rounded-full w-10 h-10 flex items-center justify-center">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={2.0}
-            stroke="currentColor"
-            className="size-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
-            />
-          </svg>
-        </div>
-
-        <div className="relative w-10 h-10 rounded-full bg-emerald-500 text-white flex justify-center items-center">
+      {/** BUTTON WHATSAPP */}
+      <div className="fixed bottom-3 right-3 flex flex-row justify-between">
+        <div className="relative w-14 h-14 rounded-full bg-green-500 text-white flex justify-center items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="currentColor"
-            className="size-[14px]"
+            className="size-5"
           >
             <path
               fillRule="evenodd"
@@ -140,7 +159,7 @@ export default function Home() {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="size-8"
+              className="size-12"
             >
               <path
                 strokeLinecap="round"
@@ -148,6 +167,9 @@ export default function Home() {
                 d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 0 1-.923 1.785A5.969 5.969 0 0 0 6 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337Z"
               />
             </svg>
+          </div>
+          <div className="absolute -top-1 -right-1 h-5 w-5 text-xs bg-red-500 text-white font-bold rounded-full flex justify-center items-center">
+            7
           </div>
         </div>
       </div>
@@ -191,7 +213,7 @@ export default function Home() {
       {/** COPYRIGHT */}
       <div className="py-10 px-10 text-xs text-center bg-gray-200">
         <p className="mb-5">
-          Copyright © 2024 Copito | Amigurumis | Crochet | Hecho a mano | Para
+          Copyright © 2024 ZLEN | Amigurumis | Crochet | Hecho a mano | Para
           grandes y pequeños
         </p>
         <div className="flex flex-row justify-center gap-2 font-semibold text-center text-white">
