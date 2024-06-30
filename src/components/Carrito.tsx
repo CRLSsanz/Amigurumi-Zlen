@@ -50,9 +50,9 @@ const Carrito = () => {
             </div>
 
             <div className="flex flex-row px-5 border-b mb-5">
-              <img src="./image/gotic1.jpg" alt="" className="w-24" />
+              <img src="./image/gotic2.avif" alt="" className="w-24" />
               <div className="w-full pl-3">
-                <h1 className="mb-2">Gotic1</h1>
+                <h1 className="mb-2">Gotic2</h1>
                 <h1>2 X $25.00 = $50.00</h1>
               </div>
               <div>
@@ -96,6 +96,7 @@ const Carrito = () => {
                 </svg>
               </div>
             </div>
+
             <div className="flex flex-row px-5 border-b mb-5">
               <img src="./image/animales3.jpg" alt="" className="w-24" />
               <div className="w-full pl-3">
