@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Comfortaa, Poppins } from "next/font/google";
 import "./globals.css";
 import Carrito from "@/components/Carrito";
+import { Providers } from "@/redux/providers";
 
 //const inter = Inter({ subsets: ["latin"] });
 const inter = Comfortaa({
@@ -23,8 +24,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        {children}
-        <Carrito />
+        <Providers>
+          {children}
+          <Carrito />
+        </Providers>
       </body>
     </html>
   );
