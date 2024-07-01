@@ -2,6 +2,8 @@
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { addProduct } from "@/redux/features/carritoSlice";
+import { url } from "inspector";
+import Image from "next/image";
 
 export default function Home() {
   const [showCar, setShowCar] = useState(false);
@@ -119,8 +121,19 @@ export default function Home() {
         {data?.map((item, index) => (
           <div key={index} className="w-full mb-10 text-center">
             <div
-              className={`relative w-[300px] h-[250px] bg-cover Xbg-fixed bg-[50%] ${item.bgAvatar} `}
+              className={`relative Xw-[300px] Xh-[250px] b g-[url('/image/animales2.jpg')]  ${item.bgAvatar} bg-cover Xbg-fixed bg-[50%] `}
             >
+              <img
+                src={`./image/${item.image}`}
+                alt=""
+                //className="w-[300px] h-[250px]"
+                style={{
+                  width: "320px",
+                  height: "240px",
+                  objectFit: "cover", // cover, contain, none
+                  objectPosition: "50% 20%",
+                }}
+              />
               <h1
                 onClick={() => dispatch(addProduct(item))}
                 className="absolute top-1 right-1 bg-red-500 text-white rounded-lg px-3 py-1 cursor-pointer active:animate-ping"
