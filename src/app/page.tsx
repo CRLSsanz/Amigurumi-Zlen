@@ -1,89 +1,18 @@
 "use client";
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { addProduct } from "@/redux/features/carritoSlice";
+import { addToCart, removeFromCart } from "@/redux/features/cartSlice";
 import { url } from "inspector";
 import Image from "next/image";
 
 export default function Home() {
-  const [showCar, setShowCar] = useState(false);
   const data = useAppSelector((state) => state.products);
+  const cart = useAppSelector((state) => state.carrito);
+
   const dispatch = useAppDispatch();
 
   return (
     <main className="w-full bg-gray-100 flex min-h-screen flex-col items-center">
-      {/** NAVBAR */}
-      <div className="w-full lg:max-w-[1024px] py-5 lg:p-5 lg:flex lg:flex-row">
-        {/** LOGO */}
-        <div className="w-full flex flex-col lg:flex-row items-center gap-2">
-          <div className="Xbg-sky-300">
-            <img
-              src="./image/logo.jpg"
-              width={100}
-              height={100}
-              alt="logo"
-              className="rounded-lg rounded-bl-[40px] rounded-tr-[40px]"
-            />
-          </div>
-          <div className="text-center lg:text-start">
-            <h1 className="text-xl font-bold tracking-widest text-gray-800">
-              ZLEN
-            </h1>
-            <h1 className=" text-gray-500 xuppercase tracking-widest text-xs">
-              Amigurumi hecho <br /> a mano
-            </h1>
-          </div>
-        </div>
-
-        {/** LINK */}
-        <ul className="lg:relative w-full p-10 lg:py-5 lg:flex lg:flex-row lg:items-center cursor-pointer">
-          <li
-            onClick={() => setShowCar(!showCar)}
-            className="py-3 px-5 border-b border-gray-300 lg:border-transparent flex flex-row justify-between"
-          >
-            <h1 className="lg:mr-3">Amigurumi</h1>
-            <div
-              className={`w-4 h-4 ${showCar ? "-rotate-90" : " rotate-90 "}`}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="size-4"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="m8.25 4.5 7.5 7.5-7.5 7.5"
-                />
-              </svg>
-            </div>
-          </li>
-          <div
-            hidden={!showCar}
-            className="lg:absolute top-20 left-10 lg:bg-gray-100 lg:shadow-lg lg:shadow-black "
-          >
-            <li className="py-3 px-10 border-b border-gray-300">· Animales</li>
-            <li className="py-3 px-10 border-b border-gray-300">
-              · Divertidos
-            </li>
-            <li className="py-3 px-10 border-b border-gray-300">· Muñecos</li>
-            <li className="py-3 px-10 border-b border-gray-300">· Pokemon</li>
-          </div>
-          <li className="py-3 px-5 border-b border-gray-300 lg:border-transparent whitespace-nowrap">
-            Nuevos diseños
-          </li>
-          <li className="py-3 px-5 border-b border-gray-300 lg:border-transparent whitespace-nowrap">
-            Acerca de
-          </li>
-          <li className="py-3 px-5 border-b border-gray-300 lg:border-transparent">
-            Contacto
-          </li>
-        </ul>
-      </div>
-
       {/** MAIN*/}
       <div className="w-full flex flex-col items-center">
         <div className="md:hidden w-full bg-red-300 mb-10 ">
@@ -134,12 +63,26 @@ export default function Home() {
                   objectPosition: "50% 20%",
                 }}
               />
-              <h1
-                onClick={() => dispatch(addProduct(item))}
-                className="absolute top-1 right-1 bg-red-500 text-white rounded-lg px-3 py-1 cursor-pointer active:animate-ping"
-              >
-                Al carrito
-              </h1>
+              {cart.some((p) => p.name === item.name) ? (
+                <button
+                  onClick={() => dispatch(removeFromCart(item.name))}
+                  className="absolute top-1 right-1 bg-red-500 text-white text-sm font-bold  rounded-md px-3 py-1 cursor-pointer active:animate-ping"
+                >
+                  Quitar del carrito
+                </button>
+              ) : (
+                <button
+                  disabled={!item.inStock}
+                  onClick={() => dispatch(addToCart(item))}
+                  className={`absolute top-1 right-1 text-white text-sm font-bold rounded-md px-3 py-1 ${
+                    item.inStock
+                      ? "bg-sky-600 cursor-pointer active:animate-ping"
+                      : "bg-gray-500"
+                  } `}
+                >
+                  {!item.inStock ? "Agotado" : "Agregar al carrito"}
+                </button>
+              )}
             </div>
             <div className="hidden">
               <img src={`./image/${item.image}`} alt="" />
