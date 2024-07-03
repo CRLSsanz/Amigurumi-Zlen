@@ -1,15 +1,37 @@
 "use client";
-import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { addToCart, removeFromCart } from "@/redux/features/cartSlice";
-import { url } from "inspector";
-import Image from "next/image";
+import { filterBySearch } from "@/redux/features/filterSlice";
 
 export default function Home() {
   const data = useAppSelector((state) => state.products);
   const cart = useAppSelector((state) => state.carrito);
+  const { byCategory, byStock, searchQuery } = useAppSelector(
+    (state) => state.filter
+  );
+
+  const filterData = () => {
+    let newData = data;
+
+    if (byCategory) {
+      newData = newData.filter((item) => item.category === byCategory);
+    }
+
+    if (byStock) {
+      newData = newData.filter((item) => item.inStock === byStock);
+    }
+
+    if (searchQuery) {
+      newData = newData.filter((item) =>
+        item.name.toLowerCase().includes(searchQuery)
+      );
+    }
+
+    return newData;
+  };
 
   const dispatch = useAppDispatch();
+  console.log(byCategory, byStock);
 
   return (
     <main className="w-full bg-gray-100 flex min-h-screen flex-col items-center">
@@ -43,11 +65,21 @@ export default function Home() {
       </div>
 
       {/** LIST <img src={`./image/${item.name}.jpg`} alt="" /> */}
-      <div className="p-5 lg:grid lg:grid-cols-3 lg:gap-5">
-        <div className="lg:col-span-3 text-end mb-5">
-          {data?.length} Diseños Encontrados{" "}
+      <div id="view" className="p-5 lg:grid lg:grid-cols-3 lg:gap-5">
+        <div className="relative mb-5">
+          <input
+            onChange={(e) => dispatch(filterBySearch(e.target.value))}
+            type="text"
+            className="w-full p-2 border-2 bg-white"
+            placeholder="Buscar Amigurumi"
+          />
+          <span className="absolute top-2 right-2 text-gray-300">O</span>
         </div>
-        {data?.map((item, index) => (
+        <div className="lg:col-span-3 mb-5">
+          {byCategory === "" ? "Productos " : byCategory} {" ("}{" "}
+          {filterData().length} {")"}
+        </div>
+        {filterData().map((item, index) => (
           <div key={index} className="w-full mb-10 text-center">
             <div
               className={`relative Xw-[300px] Xh-[250px] b g-[url('/image/animales2.jpg')]  ${item.bgAvatar} bg-cover Xbg-fixed bg-[50%] `}

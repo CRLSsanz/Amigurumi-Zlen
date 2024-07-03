@@ -9,6 +9,7 @@ const initialState = [
     bgAvatar: "bg-[url('/image/abu1.jpg')]",
     inStock: true,
     rating: 4,
+    category: "Muñecos",
   },
 
   {
@@ -18,6 +19,7 @@ const initialState = [
     bgAvatar: "bg-[url('/image/animales1.jpg')]",
     inStock: true,
     rating: 4,
+    category: "Animales",
   },
   {
     name: "Animales Grupo #2",
@@ -26,6 +28,7 @@ const initialState = [
     bgAvatar: "bg-[url('/image/animales2.jpg')]",
     inStock: false,
     rating: 4,
+    category: "Animales",
   },
   {
     name: "Animales Grupo #3",
@@ -34,6 +37,7 @@ const initialState = [
     bgAvatar: "bg-[url('/image/animales3.jpg')]",
     inStock: true,
     rating: 4,
+    category: "Animales",
   },
   {
     name: "Animales Grupo #4",
@@ -42,6 +46,7 @@ const initialState = [
     bgAvatar: "bg-[url('/image/animales4.jpg')]",
     inStock: false,
     rating: 4,
+    category: "Animales",
   },
   {
     name: "Animales Grupo #5",
@@ -50,6 +55,7 @@ const initialState = [
     bgAvatar: "bg-[url('/image/animales5.jpg')]",
     inStock: true,
     rating: 4,
+    category: "Animales",
   },
   {
     name: "Animales Grupo #6",
@@ -58,6 +64,7 @@ const initialState = [
     bgAvatar: "bg-[url('/image/animales6.avif')]",
     inStock: true,
     rating: 4,
+    category: "Animales",
   },
   {
     name: "Banana Funny Amigurumi",
@@ -66,6 +73,7 @@ const initialState = [
     bgAvatar: "bg-[url('/image/banana1.jpg')]",
     inStock: true,
     rating: 4,
+    category: "Divertidos",
   },
   {
     name: "Beimax Grandes Heroes Amigurumi",
@@ -453,6 +461,12 @@ export const productsSlice = createSlice({
     //increment: (state) => {
     //  state.amig += 1;
     //},
+    /*filterByCategory: (state, action) => {
+      state.filter((item) => item.category === action.payload);
+    },
+    filterByStock: (state) => state,
+    filterByRating: (state) => state,
+    filterBySearch: (state) => state, */
   },
 });
 

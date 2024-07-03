@@ -74,7 +74,7 @@ const Carrito = () => {
             <h1 className="py-3 border-t-2">Subtotal: {subTotal}</h1>
             <div className="px-5 text-white flex flex-col gap-2">
               <Link
-                href="/"
+                href="/#view"
                 className="px-5 py-1.5 rounded-full bg-teal-500"
                 onClick={() => setShowCar(!showCar)}
               >
@@ -82,7 +82,7 @@ const Carrito = () => {
               </Link>
 
               <Link
-                href="/cart"
+                href="/cart/#view"
                 className="px-5 py-1.5 rounded-full bg-teal-500"
                 onClick={() => setShowCar(!showCar)}
               >
@@ -94,6 +94,7 @@ const Carrito = () => {
           </div>
         </div>
 
+        {/** BOTTON SHOW CART  */}
         <div
           onClick={() => setShowCar(!showCar)}
           className="absolute bottom-3 -right-16 shadow-md shadow-black bg-white rounded-full w-14 h-14 flex items-center justify-center cursor-pointer"
