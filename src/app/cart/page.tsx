@@ -32,7 +32,10 @@ const Cart = () => {
   return (
     <section className="w-full bg-gray-100 flex flex-col items-center">
       <div className="w-full lg:max-w-[1024px] ">
-        <h1 id="view" className=" text-start border-b-2 border-gray-500 p-5">
+        <h1
+          id="view"
+          className=" text-start border-b-2 border-gray-500 p-5 mb-5"
+        >
           Carrito de Compras
           <span className="font-bold text-gray-400">
             {` (${cart.length})  `}
@@ -98,7 +101,7 @@ const Cart = () => {
             {cart?.map((item, index) => (
               <div
                 key={index}
-                className="w-full text-xs flex flex-col justify-center items-center border-2 mb-5"
+                className="w-full text-xs flex flex-col justify-center items-center border-2 mb-10"
               >
                 <div className="w-full pl-3 flex flex-row items-center border-b-2">
                   <div
@@ -196,14 +199,14 @@ const Cart = () => {
           </div>
 
           {/** SUBTOTAL */}
-          <div className="lg:basis-1/3 p-5 lg:p-0 lg:ml-5">
+          <div className="lg:basis-1/3 p-5 lg:p-0 lg:ml-5 mb-20">
             <div className="text-xs flex flex-col justify-center items-center border-2">
               <h1 className="text-base w-full py-3 px-3 bg-gray-200">
                 Totales del Carrito
               </h1>
               <div className="w-full flex flex-row justify-between p-3 border-b-2 border-t-2">
                 <h1 className="font-bold">SubTotal:</h1>
-                <h1 className="">${subTotal}.00</h1>
+                <h1 className="tracking-wider">${subTotal}.00</h1>
               </div>
               <div className="w-full flex flex-row justify-between p-3 border-b-2">
                 <h1 className="font-bold">Envio:</h1>
@@ -215,7 +218,7 @@ const Cart = () => {
               </div>
               <div className="w-full flex flex-row justify-between p-3 border-b-2">
                 <h1 className="font-bold">Total:</h1>
-                <h1>${subTotal + 8}.00</h1>
+                <h1 className="tracking-wider">${subTotal + 8}.00</h1>
               </div>
               <div className="w-full flex flex-col px-3 py-5">
                 <h1 className="font-bold mb-5">Tienes un cupon?</h1>
@@ -226,9 +229,14 @@ const Cart = () => {
             </div>
           </div>
 
-          <div className="flex flex-col lg:flex-row "></div>
-
-          <div className="h-20"></div>
+          {/** VOLVER */}
+          <div className="w-full flex justify-center p-3 mb-5">
+            <Link href="/#view" className=" p-2 px-5 bg-gray-400  rounded-full">
+              <h1 className=" text-sm text-center text-white whitespace-nowrap">
+                Volver a la tienda
+              </h1>
+            </Link>
+          </div>
         </div>
       </div>
     </section>

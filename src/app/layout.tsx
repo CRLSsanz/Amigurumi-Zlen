@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Comfortaa, Poppins } from "next/font/google";
 import "./globals.css";
-import Carrito from "@/components/Carrito";
 import { Providers } from "@/redux/providers";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 //const inter = Inter({ subsets: ["latin"] });
 const inter = Comfortaa({
@@ -28,7 +28,7 @@ export default function RootLayout({
         <Providers>
           <Header />
           {children}
-          <Carrito />
+          <Footer />
         </Providers>
       </body>
     </html>

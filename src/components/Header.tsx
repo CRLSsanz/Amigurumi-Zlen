@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import { useAppDispatch } from "@/redux/hooks";
 import { filterByCategory, filterByStock } from "@/redux/features/filterSlice";
+import Link from "next/link";
+
 const Header = () => {
   const [showList, setShowList] = useState(false);
   const dispatch = useAppDispatch();
@@ -31,14 +33,17 @@ const Header = () => {
         </div>
 
         {/** LINK */}
-        <ul className="lg:relative w-full p-10 lg:py-5 lg:px-0 lg:flex lg:flex-row lg:items-center cursor-pointer">
+        <ul className="lg:relative w-full py-10 px-5 lg:px-0 lg:flex lg:flex-row lg:items-center cursor-pointer">
           <li className="py-3 px-5 border-b border-gray-300 lg:border-transparent flex flex-row justify-between">
-            <h1
-              onClick={() => dispatch(filterByCategory(""))}
+            <Link
+              href="/#view"
+              onClick={() =>
+                dispatch(filterByCategory("")) && setShowList(false)
+              }
               className="lg:mr-3"
             >
               Amigurumi
-            </h1>
+            </Link>
             <div
               onClick={() => setShowList(!showList)}
               className={`w-4 h-4 ${showList ? "-rotate-90" : " rotate-90 "}`}
@@ -59,39 +64,84 @@ const Header = () => {
               </svg>
             </div>
           </li>
+
           <div
             hidden={!showList}
-            className="lg:absolute top-20 left-10 lg:bg-gray-100 lg:shadow-lg lg:shadow-black "
+            className="lg:absolute top-20 left-5 lg:bg-gray-100 lg:shadow-lg lg:shadow-black "
           >
-            <li
-              onClick={() => dispatch(filterByCategory("Animales"))}
-              className="py-3 px-10 border-b border-gray-300"
-            >
-              · Animales
+            <li className="py-3 border-b border-gray-300">
+              <Link
+                href="/#view"
+                onClick={() =>
+                  dispatch(filterByCategory("Animales")) &&
+                  setShowList(!showList)
+                }
+                className="w-full py-3 px-10"
+              >
+                · Diseños de Animales
+              </Link>
             </li>
-            <li
-              onClick={() => dispatch(filterByCategory("Divertidos"))}
-              className="py-3 px-10 border-b border-gray-300"
-            >
-              · Divertidos
+            <li className="py-3 border-b border-gray-300">
+              <Link
+                href="/#view"
+                onClick={() =>
+                  dispatch(filterByCategory("Divertidos")) &&
+                  setShowList(!showList)
+                }
+                className="py-3 px-10"
+              >
+                · Personajes y/o Divertidos
+              </Link>{" "}
             </li>
-            <li className="py-3 px-10 border-b border-gray-300">· Muñecos</li>
-            <li className="py-3 px-10 border-b border-gray-300">· Pokemon</li>
+            <li className="py-3 border-b border-gray-300">
+              <Link
+                href="/#view"
+                onClick={() =>
+                  dispatch(filterByCategory("Colecciones")) &&
+                  setShowList(!showList)
+                }
+                className="py-3 px-10"
+              >
+                · Colecciones Amigurumis
+              </Link>
+            </li>
+            <li className="py-3 border-b border-gray-300">
+              <Link
+                href="/#view"
+                onClick={() =>
+                  dispatch(filterByCategory("Animaciones")) &&
+                  setShowList(!showList)
+                }
+                className="py-3 px-10"
+              >
+                · Personajes Animados
+              </Link>{" "}
+            </li>
           </div>
+
           <li className="py-3 px-5 border-b border-gray-300 lg:border-transparent whitespace-nowrap">
-            Nuevos diseños
+            <Link
+              href="/#view"
+              onClick={() =>
+                dispatch(filterByCategory("Nuevos Diseños")) &&
+                setShowList(false)
+              }
+              className=""
+            >
+              Nuevos diseños
+            </Link>
           </li>
-          <li
-            onClick={() => dispatch(filterByStock(true))}
-            className="py-3 px-5 border-b border-gray-300 lg:border-transparent whitespace-nowrap"
-          >
-            Acerca de
+
+          <li className="py-3 px-5 border-b border-gray-300 lg:border-transparent whitespace-nowrap">
+            <Link href="/#About" className="">
+              Acerca de
+            </Link>
           </li>
-          <li
-            onClick={() => dispatch(filterByStock(false))}
-            className="py-3 px-5 lg:pr-0 border-b border-gray-300 lg:border-transparent"
-          >
-            Contacto
+
+          <li className="py-3 px-5 lg:pr-0 border-b border-gray-300 lg:border-transparent">
+            <Link href="/#Contac" className="">
+              Contacto
+            </Link>
           </li>
         </ul>
       </div>

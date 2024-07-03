@@ -1,37 +1,69 @@
 "use client";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { addToCart, removeFromCart } from "@/redux/features/cartSlice";
-import { filterBySearch } from "@/redux/features/filterSlice";
+import Filter from "@/components/Filter";
+import Rating from "@/components/Rating";
+import Carrito from "@/components/Carrito";
 
 export default function Home() {
   const data = useAppSelector((state) => state.products);
   const cart = useAppSelector((state) => state.carrito);
-  const { byCategory, byStock, searchQuery } = useAppSelector(
-    (state) => state.filter
-  );
+  const { byCategory, byStock, searchQuery, sort, byRating, byA_Z } =
+    useAppSelector((state) => state.filter);
+  const dispatch = useAppDispatch();
 
   const filterData = () => {
     let newData = data;
 
+    //let toys = newData.slice();
+    //let arr3 = toys.sort((a, b) => a.price - b.price);
+    //console.log(arr3);
+
+    if (byA_Z) {
+      let toys = newData.slice();
+      newData = toys.sort((a, b) => {
+        if (a.name > b.name) {
+          return 1;
+        }
+        if (a.name < b.name) {
+          return -1;
+        }
+        // a must be equal to b
+        return 0;
+      });
+    }
+
+    if (sort) {
+      let toys = newData.slice();
+      newData = toys.sort((a, b) =>
+        sort === "lowToHigh" ? a.price - b.price : b.price - a.price
+      );
+    }
+
     if (byCategory) {
-      newData = newData.filter((item) => item.category === byCategory);
+      if (byCategory === "Nuevos Diseños") {
+        newData = newData.slice(-10);
+      } else {
+        newData = newData.filter((item) => item.category === byCategory);
+      }
     }
 
     if (byStock) {
       newData = newData.filter((item) => item.inStock === byStock);
     }
 
+    if (byRating) {
+      newData = newData.filter((item) => item.rating >= byRating);
+    }
+
     if (searchQuery) {
       newData = newData.filter((item) =>
-        item.name.toLowerCase().includes(searchQuery)
+        item.name.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
 
     return newData;
   };
-
-  const dispatch = useAppDispatch();
-  console.log(byCategory, byStock);
 
   return (
     <main className="w-full bg-gray-100 flex min-h-screen flex-col items-center">
@@ -64,23 +96,21 @@ export default function Home() {
         </h1>
       </div>
 
+      {/** FILTER */}
+      <Filter />
+
       {/** LIST <img src={`./image/${item.name}.jpg`} alt="" /> */}
-      <div id="view" className="p-5 lg:grid lg:grid-cols-3 lg:gap-5">
-        <div className="relative mb-5">
-          <input
-            onChange={(e) => dispatch(filterBySearch(e.target.value))}
-            type="text"
-            className="w-full p-2 border-2 bg-white"
-            placeholder="Buscar Amigurumi"
-          />
-          <span className="absolute top-2 right-2 text-gray-300">O</span>
-        </div>
-        <div className="lg:col-span-3 mb-5">
-          {byCategory === "" ? "Productos " : byCategory} {" ("}{" "}
-          {filterData().length} {")"}
+      <div
+        id="view"
+        className="lg:w-[1024px] p-5 lg:px-0 lg:grid lg:grid-cols-3 lg:gap-5"
+      >
+        <div className="lg:col-span-3 mb-5 font-bold">
+          {byCategory === "" ? "Amigurumis " : byCategory} {" ("}
+          {filterData().length}
+          {")"}
         </div>
         {filterData().map((item, index) => (
-          <div key={index} className="w-full mb-10 text-center">
+          <div key={index} className="w-full border mb-5 lg:mb-0">
             <div
               className={`relative Xw-[300px] Xh-[250px] b g-[url('/image/animales2.jpg')]  ${item.bgAvatar} bg-cover Xbg-fixed bg-[50%] `}
             >
@@ -89,13 +119,13 @@ export default function Home() {
                 alt=""
                 //className="w-[300px] h-[250px]"
                 style={{
-                  width: "320px",
+                  width: "380px",
                   height: "240px",
                   objectFit: "cover", // cover, contain, none
                   objectPosition: "50% 20%",
                 }}
               />
-              {cart.some((p) => p.name === item.name) ? (
+              {/* cart.some((p) => p.name === item.name) ? (
                 <button
                   onClick={() => dispatch(removeFromCart(item.name))}
                   className="absolute top-1 right-1 bg-red-500 text-white text-sm font-bold  rounded-md px-3 py-1 cursor-pointer active:animate-ping"
@@ -114,13 +144,38 @@ export default function Home() {
                 >
                   {!item.inStock ? "Agotado" : "Agregar al carrito"}
                 </button>
-              )}
+              ) */}
             </div>
-            <div className="hidden">
-              <img src={`./image/${item.image}`} alt="" />
+
+            <div className="p-5">
+              <h1 className=""> {item.name}</h1>
+              <h1 className="text-sm Xtext-teal-500"> $ {item.price}.00</h1>
+              <div className="pointer-events-none flex flex-row items-center text-gray-500 mb-2">
+                <Rating rating={item.rating} />
+              </div>
+              <div>
+                {cart.some((p) => p.name === item.name) ? (
+                  <button
+                    onClick={() => dispatch(removeFromCart(item.name))}
+                    className=" bg-red-500 text-white text-sm font-bold rounded px-3 py-1.5 cursor-pointer active:animate-ping"
+                  >
+                    Quitar del carrito
+                  </button>
+                ) : (
+                  <button
+                    disabled={!item.inStock}
+                    onClick={() => dispatch(addToCart(item))}
+                    className={` text-white text-sm font-bold rounded px-3 py-1.5 ${
+                      item.inStock
+                        ? "bg-sky-500 cursor-pointer active:animate-ping"
+                        : "bg-indigo-600"
+                    } `}
+                  >
+                    {!item.inStock ? "Agotado" : "Agregar al carrito"}
+                  </button>
+                )}
+              </div>
             </div>
-            <h1 className="text-sm pt-4 "> {item.name}</h1>
-            <h1 className="text-teal-500"> $ {item.price}.00</h1>
           </div>
         ))}
       </div>
@@ -163,58 +218,8 @@ export default function Home() {
         </div>
       </div>
 
-      {/** FOOTER */}
-      <div className="border-t w-full lg:max-w-[1024px] text-sm  py-10 flex flex-col items-center">
-        <div className="w-24 h-24 border-2 border-gray-600 rounded-full flex items-center justify-center mb-10 ">
-          <h1 className="text-center text-lg font-bold leading-3">
-            <span className="text-2xl">100%</span>{" "}
-            <span className="">hecho a mano</span>
-          </h1>
-        </div>
-
-        <div className="lg:grid lg:grid-cols-4 lg:gap-5">
-          <div className="text-center">
-            <h1 className="font-semibold py-2">Contacto</h1>
-            <h1>+39 991 044 1430</h1>
-            <h1>hola@amigurumiamano.com</h1>
-            <h1>Milan - Italia</h1>
-          </div>
-          <div className="text-center mb-5">
-            <h1 className="font-semibold py-2">Terminos y condiciones</h1>
-            <h1>Politicas de privacidad</h1>
-            <h1>Politica de envio</h1>
-            <h1>Preguntas frecuentes</h1>
-          </div>
-          <div className="col-span-2 w-full px-5 text-center flex flex-col items-center">
-            <h1 className="font-bold text-lg mb-2">
-              Suscribete y recibe noticias sobre amigurumis ZLEN!
-            </h1>
-            <div className="w-full flex flex-col justify-center items-center lg:flex-row">
-              <input
-                name="email"
-                type="text"
-                className="w-full p-2 border border-gray-300 bg-white mb-2 lg:mb-0 lg:mr-2"
-              />
-              <div className="bg-black rounded-full text-white p-2 w-32">
-                Suscribete
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/** COPYRIGHT */}
-      <div className="w-full py-10 px-10 text-xs text-center bg-gray-200">
-        <p className="mb-5">
-          Copyright © 2024 ZLEN | Amigurumis | Crochet | Hecho a mano | Para
-          grandes y pequeños
-        </p>
-        <div className="flex flex-row justify-center gap-2 font-semibold text-center text-white">
-          <h1 className="py-2 w-10 rounded-lg border bg-sky-400">FB</h1>
-
-          <h1 className="py-2 w-10 rounded-lg border bg-pink-400">IG</h1>
-        </div>
-      </div>
+      {/** CARRITO NAVBAR */}
+      <Carrito />
     </main>
   );
 }
