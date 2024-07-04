@@ -132,7 +132,7 @@ const Filter = () => {
 
         <div
           onClick={() => dispatch(clearFilter())}
-          className="px-4 py-2 bg-indigo-500 text-white mb-5"
+          className="text-center px-4 py-2 rounded-sm bg-teal-500 text-white mb-5"
         >
           Ver Todo
         </div>

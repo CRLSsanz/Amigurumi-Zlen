@@ -4,18 +4,21 @@ import React, { useEffect, useState } from "react";
 const WhatsApp = () => {
   const [subTotal, setSubTotal] = useState(0);
   const cart = useAppSelector((state) => state.carrito);
-  let message: string = "Hola quiero comprar tu producto. ";
+  //let phone="51990441430"
+  let phone = "393801836002";
+  let message: string = "Hola%0Aquiero comprar tu producto.%0A"; //%0A= saltar linea
 
   useEffect(() => {
     setSubTotal(cart.reduce((acc, curr) => acc + curr.price * curr.count, 0));
     console.log(subTotal);
   }, [cart]);
 
-  const createPDF = () => {};
-
   if (cart.length !== 0) {
-    cart.map((i) => (message += "/" + i.count + "x" + i.name + " "));
-    message += "/SUBTOTAL:$" + subTotal + ".00 Gracias";
+    cart.map(
+      (i) =>
+        (message += "  " + i.count + "x" + i.name.replace("#", "n") + "%0A")
+    );
+    message += "SUBTOTAL: $" + subTotal + ".00 %0A%0AGracias";
   }
 
   //href={`https://wa.me/51990441430?text=${message}`}
@@ -29,8 +32,7 @@ const WhatsApp = () => {
       {/** BUTTON WHATSAPP */}
       <div className="fixed bottom-3 right-3 flex flex-row justify-between">
         <a
-          //onClick={() => createPDF()}
-          href={`https://api.whatsapp.com/send?phone=51990441430&text=${message}`}
+          href={`https://api.whatsapp.com/send?phone=${phone}&text=${message}`}
           target="_blank"
           rel="noopener noreferrer"
           className="relative w-14 h-14 rounded-full bg-green-500 hover:bg-emerald-600  text-white flex justify-center items-center cursor-pointer"

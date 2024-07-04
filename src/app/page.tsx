@@ -105,7 +105,7 @@ export default function Home() {
         id="view"
         className="lg:w-[1024px] p-5 lg:px-0 lg:grid lg:grid-cols-3 lg:gap-5"
       >
-        <div className="lg:col-span-3 mb-5 font-bold">
+        <div className="uppercase lg:col-span-3 mb-5 font-bold">
           {byCategory === "" ? "Amigurumis " : byCategory} {" ("}
           {filterData().length}
           {")"}
@@ -148,17 +148,22 @@ export default function Home() {
               ) */}
             </div>
 
-            <div className="p-5">
-              <h1 className=""> {item.name}</h1>
-              <h1 className="text-sm Xtext-teal-500"> $ {item.price}.00</h1>
-              <div className="pointer-events-none flex flex-row items-center text-gray-500 mb-2">
-                <Rating rating={item.rating} />
+            <div className=" Xrelative p-5">
+              <h1 className="font-bold mb-1"> {item.name}</h1>
+              <div className="flex flex-col Xjustify-between mb-3">
+                {/** price.split(".")[0] */}
+                <h1 className={`text-sm text-gray-700 `}>$ {item.price}.00</h1>
+                <h1 className="text-xs text-gray-700">Delivery en 5 dias</h1>
+                <div className="pointer-events-none flex flex-row items-center text-blue-600">
+                  <Rating rating={item.rating} />
+                </div>
               </div>
-              <div>
+
+              <div className="Xabsolute Xbottom-5 Xright-5">
                 {cart.some((p) => p.name === item.name) ? (
                   <button
                     onClick={() => dispatch(removeFromCart(item.name))}
-                    className=" bg-red-500 text-white text-sm font-bold rounded px-3 py-1.5 cursor-pointer active:animate-ping"
+                    className=" bg-red-500 text-white text-sm font-bold rounded-sm px-3 py-1.5 cursor-pointer active:animate-ping"
                   >
                     Quitar del carrito
                   </button>
@@ -166,9 +171,9 @@ export default function Home() {
                   <button
                     disabled={!item.inStock}
                     onClick={() => dispatch(addToCart(item))}
-                    className={` text-white text-sm font-bold rounded px-3 py-1.5 ${
+                    className={` text-white text-sm font-bold rounded-sm px-3 py-1.5 ${
                       item.inStock
-                        ? "bg-sky-500 cursor-pointer active:animate-ping"
+                        ? "bg-teal-500 cursor-pointer active:animate-ping"
                         : "bg-indigo-600"
                     } `}
                   >
