@@ -3,11 +3,9 @@ import React, { useEffect, useState } from "react";
 import { useAppSelector, useAppDispatch } from "@/redux/hooks";
 import { changeCartQty, removeFromCart } from "@/redux/features/cartSlice";
 import Link from "next/link";
-import { count } from "console";
 
 const Cart = () => {
   const [subTotal, setSubTotal] = useState(0);
-  const [qty, setQty] = useState(0);
 
   const cart = useAppSelector((state) => state.carrito);
   const dispatch = useAppDispatch();
@@ -23,7 +21,7 @@ const Cart = () => {
         <div className="text-xs w-full border mb-5 p-3">
           tu carrito esta vacio
         </div>
-        <Link href="/#view" className="flex p-3 bg-teal-400  rounded-full">
+        <Link href="/#view" className="flex p-3 bg-teal-500  rounded-full">
           <h1 className="w-full text-center text-white">Volver a la tienda</h1>
         </Link>
       </div>
