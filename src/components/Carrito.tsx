@@ -11,9 +11,7 @@ const Carrito = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    setSubTotal(
-      carrito.reduce((acc, curr) => acc + curr.price * curr.count, 0)
-    );
+    setSubTotal(carrito.reduce((acc, curr) => acc + curr.price * curr.qty, 0));
   }, [carrito]);
 
   return (
@@ -61,7 +59,7 @@ const Carrito = () => {
                 <div className=" Xtext-gray-400 w-full pr-4">
                   <h1 className=" text-xs text-gray-600 ">{item.name}</h1>
                   <h1 className=" tracking-wider">
-                    {item.count} X ${item.price}.00 = ${item.price * item.count}
+                    {item.qty} X ${item.price}.00 = ${item.price * item.qty}
                     .00
                   </h1>
                 </div>
@@ -90,26 +88,24 @@ const Carrito = () => {
           </div>
           {/** SUBTOTAL */}
           <div className="text-center text-sm ">
-            <h1 className="py-3 border-t-2">Subtotal: {subTotal}</h1>
-            <div className="px-5 text-white flex flex-col gap-2">
-              <h1
-                //href="/#view"
-                className="px-5 py-2 rounded-full bg-teal-500 cursor-pointer"
-                onClick={() => setShowCar(!showCar)}
-              >
-                Continuar comprando
-              </h1>
-
+            <h1 className="py-3 border-t-2 font-bold">
+              Subtotal: ${subTotal}.00
+            </h1>
+            <div className="px-2 text-white flex flex-col">
               <Link
                 href="/cart/#view"
-                className="px-5 py-2 rounded-full bg-teal-500"
+                className="px-5 py-2.5 rounded-full bg-teal-500 mb-4"
                 onClick={() => setShowCar(!showCar)}
               >
                 Ver carrito
               </Link>
 
-              <h1 className="hidden px-5 py-1.5 rounded-full bg-teal-500">
-                Checkout
+              <h1
+                //href="/#view"
+                className="px-5 py-2.5 rounded-full bg-teal-600 cursor-pointer"
+                onClick={() => setShowCar(!showCar)}
+              >
+                Hacer Pedido
               </h1>
             </div>
           </div>

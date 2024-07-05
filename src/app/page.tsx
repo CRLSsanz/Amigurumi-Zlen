@@ -91,13 +91,13 @@ export default function Home() {
           ternura y creatividad, donde cada amigurumi es una pequeña obra de
           arte.
         </p>
-        <p className="lg:max-w-[500px] px-5 text-xs text-center mb-5 leading-5">
+        <p className="lg:max-w-[500px] px-5 text-xs text-center mb-10 leading-5">
           Te invitamos a explorar nuestro catálogo y encontrar el compañero
           perfecto que alegrará tu vida o será el regalo ideal para alguien
           especial. ¡Prepárate para abrazar la dulzura de los amigurumis y
           desatar tu imaginación en nuestra tienda en línea!
         </p>
-        <h1 className="text-center bg-teal-500 px-5 py-2 rounded-full text-white mb-10">
+        <h1 className="text-center text-sm bg-gradient-to-bl from-purple-600 to-pink-500 px-7 py-2 rounded-tl-md rounded-br-md rounded-3xl  text-white mb-20 cursor-pointer">
           Saber mas de ZLEN
         </h1>
       </div>
@@ -108,7 +108,7 @@ export default function Home() {
       {/** LIST <img src={`./image/${item.name}.jpg`} alt="" /> */}
       <div
         id="view"
-        className="lg:w-[1024px] p-5 lg:px-0 lg:grid lg:grid-cols-3 lg:gap-5"
+        className="w-full lg:w-[1024px] p-5 lg:px-0 lg:grid lg:grid-cols-3 lg:gap-5"
       >
         <div className="uppercase lg:col-span-3 mb-5 font-bold">
           {byCategory === "" ? "Amigurumis " : byCategory} {" ("}

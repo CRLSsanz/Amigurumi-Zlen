@@ -60,7 +60,7 @@ const Filter = () => {
           />
           <label
             htmlFor="default-checkbox"
-            className="ms-2 text-sm font-medium text-gray-600"
+            className="ms-2 text-sm font-medium text-gray-600 cursor-pointer"
           >
             Orden alfabetico A-Z
           </label>
@@ -78,7 +78,7 @@ const Filter = () => {
           />
           <label
             htmlFor="default-radio-1"
-            className="ms-2 text-sm font-medium text-gray-600"
+            className="ms-2 text-sm font-medium text-gray-600 cursor-pointer"
           >
             De menor precio
           </label>
@@ -97,7 +97,7 @@ const Filter = () => {
           />
           <label
             htmlFor="default-radio-2"
-            className="ms-2 text-sm font-medium text-gray-600"
+            className="ms-2 text-sm font-medium text-gray-600 cursor-pointer"
           >
             De mayor precio
           </label>
@@ -114,14 +114,14 @@ const Filter = () => {
           />
           <label
             htmlFor="default-checkbox2"
-            className="ms-2 text-sm font-medium text-gray-600"
+            className="ms-2 text-sm font-medium text-gray-600 cursor-pointer"
           >
             Ocultar fuera de Stock
           </label>
         </div>
 
-        <div className="flex flex-row items-center text-gray-600 mb-4">
-          <label className="mr-3">Rating: </label>
+        <div className="flex flex-row items-center text-gray-500 mb-6">
+          <label className="text-sm text-gray-600 mr-3">Rating: </label>
           <Rating
             rating={byRating}
             style={{ cursor: "pointer" }}
@@ -132,7 +132,7 @@ const Filter = () => {
 
         <div
           onClick={() => dispatch(clearFilter())}
-          className="text-center px-4 py-2 rounded-sm bg-teal-500 text-white mb-5"
+          className="text-center px-4 py-2 rounded-sm bg-teal-500 text-white mb-10"
         >
           Ver Todo
         </div>

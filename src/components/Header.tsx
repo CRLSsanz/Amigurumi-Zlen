@@ -45,20 +45,23 @@ const Header = () => {
         </div>
 
         {/** LINK */}
-        <ul className="lg:relative w-full py-10 px-5 lg:px-0 lg:flex lg:flex-row lg:items-center cursor-pointer">
-          <li className="py-3 px-5 border-b border-gray-300 lg:border-transparent flex flex-row justify-between">
+        <ul className="lg:relative w-full py-10 px-5 lg:px-0 lg:flex lg:flex-row lg:items-center">
+          <li className="p-3 border-b border-gray-300 lg:border-transparent flex flex-row justify-between">
             <Link
               href="/#view"
               onClick={() =>
                 dispatch(filterByCategory("")) && setShowList(false)
               }
-              className="lg:mr-3"
+              className="p-1 active:animate-ping lg:mr-3"
             >
               Amigurumi
             </Link>
+
             <div
               onClick={() => setShowList(!showList)}
-              className={`w-4 h-4 ${showList ? "-rotate-90" : " rotate-90 "}`}
+              className={`w-6 h-6 flex items-center justify-center cursor-pointer ${
+                showList ? "-rotate-90" : " rotate-90 "
+              }`}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -81,77 +84,83 @@ const Header = () => {
             hidden={!showList}
             className="lg:absolute top-20 left-5 lg:bg-gray-100 lg:shadow-lg lg:shadow-black "
           >
-            <li className="py-3 border-b border-gray-300">
+            <li className="flex p-3 pl-5 border-b border-gray-300 ">
               <Link
                 href="/#view"
                 onClick={() =>
                   dispatch(filterByCategory("Animales")) &&
                   setShowList(!showList)
                 }
-                className="w-full py-3 px-10"
+                className="p-1 active:animate-ping"
               >
                 · Diseños de Animales
               </Link>
             </li>
-            <li className="py-3 border-b border-gray-300">
+            <li className="flex p-3 pl-5 border-b border-gray-300 ">
               <Link
                 href="/#view"
                 onClick={() =>
                   dispatch(filterByCategory("Divertidos")) &&
                   setShowList(!showList)
                 }
-                className="py-3 px-10"
+                className="p-1 active:animate-ping"
               >
                 · Personajes y/o Divertidos
               </Link>{" "}
             </li>
-            <li className="py-3 border-b border-gray-300">
+            <li className="flex p-3 pl-5 border-b border-gray-300 ">
               <Link
                 href="/#view"
                 onClick={() =>
                   dispatch(filterByCategory("Colecciones")) &&
                   setShowList(!showList)
                 }
-                className="py-3 px-10"
+                className="p-1 active:animate-ping"
               >
                 · Colecciones Amigurumis
               </Link>
             </li>
-            <li className="py-3 border-b border-gray-300">
+            <li className="flex p-3 pl-5 border-b border-gray-300 ">
               <Link
                 href="/#view"
                 onClick={() =>
                   dispatch(filterByCategory("Animaciones")) &&
                   setShowList(!showList)
                 }
-                className="py-3 px-10"
+                className="p-1 active:animate-ping"
               >
                 · Personajes Animados
               </Link>{" "}
             </li>
           </div>
 
-          <li className="py-3 px-5 border-b border-gray-300 lg:border-transparent whitespace-nowrap">
+          <li className="flex p-3 border-b border-gray-300 lg:border-transparent whitespace-nowrap">
             <Link
               href="/#view"
               onClick={() =>
                 dispatch(filterByCategory("Nuevos Diseños")) &&
                 setShowList(false)
               }
-              className=""
+              className=" p-1 active:animate-ping cursor-pointer"
             >
               Nuevos diseños
             </Link>
           </li>
 
-          <li className="py-3 px-5 border-b border-gray-300 lg:border-transparent whitespace-nowrap">
-            <Link href="/#About" className="">
+          <li className="flex p-3 border-b border-gray-300 lg:border-transparent whitespace-nowrap">
+            <Link
+              href="/#About"
+              className=" p-1 active:animate-ping cursor-pointer"
+            >
               Acerca de
             </Link>
           </li>
 
-          <li className="py-3 px-5 lg:pr-0 border-b border-gray-300 lg:border-transparent">
-            <Link href="/#Contac" className="">
+          <li className="flex p-3 border-b border-gray-300 lg:border-transparent lg:pr-0">
+            <Link
+              href="/#Contac"
+              className=" p-1 active:animate-ping cursor-pointer"
+            >
               Contacto
             </Link>
           </li>

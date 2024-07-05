@@ -11,6 +11,11 @@ const SingleProduct = ({ prod }: any) => {
   const cart = useAppSelector((state) => state.carrito);
   const dispatch = useAppDispatch();
 
+  const sendProduct = () => {
+    //let newProd = { ...prod, qty: "2" };
+    dispatch(addToCart({ ...prod, qty: 1 }));
+  };
+
   return (
     <div className="w-full border mb-5 lg:mb-0">
       <div className={`relative max-w-[380px] h-[250px] bg-red-300 `}>
@@ -59,13 +64,13 @@ const SingleProduct = ({ prod }: any) => {
         </Link>
       </div>
 
-      <div className=" Xrelative p-5">
-        <h1 className="font-bold mb-1"> {prod.name}</h1>
+      <div className="w-full p-5">
+        <h1 className="w-full font-bold mb-1"> {prod.name}</h1>
         <div className="flex flex-col Xjustify-between mb-3">
           {/** price.split(".")[0] */}
           <h1 className={`text-sm text-gray-700 `}>$ {prod.price}.00</h1>
-          <h1 className="text-xs text-gray-700">Delivery en 5 dias</h1>
-          <div className="pointer-events-none flex flex-row items-center text-blue-600">
+          <h1 className="text-xs text-gray-500">Delivery en 5 dias</h1>
+          <div className="pointer-events-none flex flex-row items-center text-gray-400">
             <Rating rating={prod.rating} />
           </div>
         </div>
@@ -81,14 +86,14 @@ const SingleProduct = ({ prod }: any) => {
           ) : (
             <button
               disabled={!prod.inStock}
-              onClick={() => dispatch(addToCart(prod))}
+              onClick={() => sendProduct()}
               className={` text-white text-sm font-bold rounded-sm px-3 py-1.5 ${
                 prod.inStock
-                  ? "bg-teal-500 cursor-pointer active:animate-ping"
-                  : "bg-indigo-600"
+                  ? "bg-blue-500 cursor-pointer active:animate-ping"
+                  : "bg-blue-400"
               } `}
             >
-              {!prod.inStock ? "Agotado" : "Agregar al carrito"}
+              {!prod.inStock ? "Producto agotado" : "Agregar al carrito"}
             </button>
           )}
         </div>

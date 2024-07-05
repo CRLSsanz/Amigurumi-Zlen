@@ -26,6 +26,11 @@ const Product = ({ params }: any) => {
   let name2 = name.replace(/\b[a-z]/g, (c: any) => c.toUpperCase());
   //console.log(name2);
 
+  useEffect(() => {
+    let [itemCart] = cart.filter((item) => item.name === name2);
+    if (itemCart) setQty(itemCart.qty);
+  }, [cart]);
+
   const [item] = data.filter((item) => item.name === name2);
 
   return (
@@ -60,8 +65,10 @@ const Product = ({ params }: any) => {
           </h1>
         </div>
 
-        <h1 className={`text-teal-600 font-bold mb-2 `}>$ {item.price}.00</h1>
-        <div className="pointer-events-none flex flex-row items-center text-blue-600 mb-5">
+        <h1 className={`text-lg text-teal-600 font-bold mb-2 `}>
+          $ {item.price}.00
+        </h1>
+        <div className="pointer-events-none flex flex-row items-center text-gray-500 mb-5">
           <Rating rating={item.rating} />
         </div>
 
@@ -70,7 +77,17 @@ const Product = ({ params }: any) => {
           <div className="flex flex-row items-center justify-between pr-10">
             <div className="border-2 flex flex-row items-center justify-center text-center">
               <button
-                onClick={() => setQty(qty - 1)}
+                //onClick={() => dispatch(changeCartQty(qty - 1))}
+                onClick={() =>
+                  cart.some((p) => p.name === item.name)
+                    ? dispatch(
+                        changeCartQty({
+                          name: item.name,
+                          qty: qty - 1,
+                        })
+                      )
+                    : setQty(qty - 1)
+                }
                 disabled={qty === 1 ? true : false}
                 className="w-7 h-7 text-lg"
               >
@@ -82,7 +99,17 @@ const Product = ({ params }: any) => {
               </span>
 
               <button
-                onClick={() => setQty(qty + 1)}
+                //onClick={() => setQty(qty + 1)}
+                onClick={() =>
+                  cart.some((p) => p.name === item.name)
+                    ? dispatch(
+                        changeCartQty({
+                          name: item.name,
+                          qty: qty + 1,
+                        })
+                      )
+                    : setQty(qty + 1)
+                }
                 disabled={qty === 5 ? true : false}
                 className="w-7 h-7 text-lg"
               >
@@ -103,14 +130,14 @@ const Product = ({ params }: any) => {
             ) : (
               <button
                 disabled={!item.inStock}
-                onClick={() => dispatch(addToCart(item))}
+                onClick={() => dispatch(addToCart({ ...item, qty }))}
                 className={`w-full text-white text-sm font-bold rounded-sm px-3 py-1.5 ${
                   item.inStock
-                    ? "bg-teal-500 cursor-pointer active:animate-ping"
-                    : "bg-indigo-600"
+                    ? "bg-blue-500 cursor-pointer active:animate-ping"
+                    : "bg-blue-400"
                 } `}
               >
-                {!item.inStock ? "Agotado" : "Agregar al carrito"}
+                {!item.inStock ? "Producto agotado" : "Agregar al carrito"}
               </button>
             )}
           </div>

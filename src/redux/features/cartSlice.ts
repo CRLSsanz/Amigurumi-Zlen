@@ -5,7 +5,7 @@ type Product = {
   image: string;
   price: number;
   bgAvatar: string;
-  count: number;
+  qty: number;
   category?: string;
 };
 
@@ -16,9 +16,8 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
-      //state.push(action.payload);
-      //return [...state, action.payload];
-      return [...state, { ...action.payload, count: 1 }];
+      state.push(action.payload);
+      //return [...state, { ...action.payload, qty: 3 }];
     },
     removeFromCart: (state, action) => {
       //const prodFound = state.find((item) => item.name === action.payload);
@@ -30,8 +29,8 @@ export const cartSlice = createSlice({
     changeCartQty: (state, action) => {
       state.filter((item) =>
         item.name === action.payload.name
-          ? (item.count = action.payload.count)
-          : item.count
+          ? (item.qty = action.payload.qty)
+          : item.qty
       );
     },
   },

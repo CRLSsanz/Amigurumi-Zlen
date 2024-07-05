@@ -11,7 +11,7 @@ const Cart = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    setSubTotal(cart.reduce((acc, curr) => acc + curr.price * curr.count, 0));
+    setSubTotal(cart.reduce((acc, curr) => acc + curr.price * curr.qty, 0));
   }, [cart]);
 
   if (cart.length === 0)
@@ -85,9 +85,9 @@ const Cart = () => {
                   </td>
                   <td className="py-2 px-5 w-auto">{item.name}</td>
                   <td className="py-2 pr-3 tracking-wider">${item.price}.00</td>
-                  <td className="py-2 pr-3">{item.count}</td>
+                  <td className="py-2 pr-3">{item.qty}</td>
                   <td className="py-2 pr-3 tracking-wider">
-                    ${item.price * item.count}.00
+                    ${item.price * item.qty}.00
                   </td>
                 </tr>
               ))}
@@ -154,18 +154,18 @@ const Cart = () => {
                             dispatch(
                               changeCartQty({
                                 name: item.name,
-                                count: item.count - 1,
+                                qty: item.qty - 1,
                               })
                             )
                           }
-                          disabled={item.count === 1 ? true : false}
+                          disabled={item.qty === 1 ? true : false}
                           className="w-7 h-7 text-lg"
                         >
                           -
                         </button>
 
                         <span className="w-7 h-7 py-1.5 border-l-2 border-r-2">
-                          {item.count}
+                          {item.qty}
                         </span>
 
                         <button
@@ -173,11 +173,11 @@ const Cart = () => {
                             dispatch(
                               changeCartQty({
                                 name: item.name,
-                                count: item.count + 1,
+                                qty: item.qty + 1,
                               })
                             )
                           }
-                          disabled={item.count === 5 ? true : false}
+                          disabled={item.qty === 5 ? true : false}
                           className="w-7 h-7 text-lg"
                         >
                           +
@@ -187,7 +187,7 @@ const Cart = () => {
                     <div className="w-full flex flex-row justify-between p-3">
                       <h1 className="font-bold">SubTotal:</h1>
                       <h1 className="tracking-wider">
-                        ${item.price * item.count}.00
+                        ${item.price * item.qty}.00
                       </h1>
                     </div>
                   </div>
