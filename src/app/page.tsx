@@ -1,17 +1,16 @@
 "use client";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { addToCart, removeFromCart } from "@/redux/features/cartSlice";
+import { useAppSelector } from "@/redux/hooks";
 import Filter from "@/components/Filter";
-import Rating from "@/components/Rating";
 import Carrito from "@/components/Carrito";
 import WhatsApp from "@/components/WhatsApp";
+import SingleProduct from "@/components/SingleProduct";
+import Image from "next/image";
 
 export default function Home() {
   const data = useAppSelector((state) => state.products);
-  const cart = useAppSelector((state) => state.carrito);
+
   const { byCategory, byStock, searchQuery, sort, byRating, byA_Z } =
     useAppSelector((state) => state.filter);
-  const dispatch = useAppDispatch();
 
   const filterData = () => {
     let newData = data;
@@ -68,10 +67,16 @@ export default function Home() {
 
   return (
     <main className="w-full bg-gray-100 flex min-h-screen flex-col items-center">
-      {/** MAIN*/}
+      {/** MAIN --- <img src="./image/fondo1.jpg" alt="" /> */}
       <div className="w-full flex flex-col items-center">
-        <div className="md:hidden w-full bg-red-300 mb-10 ">
-          <img src="./image/fondo1.jpg" alt="" />
+        <div className="md:hidden w-full relative bg-red-300 mb-10 ">
+          <Image
+            src={require(`/public/image/fondo1.jpg`)}
+            alt="Amigurumi"
+            sizes=""
+            //width={250}
+            //height={200}
+          />
         </div>
         <div
           className={`hidden md:flex w-full md:h-[calc(100vh-180px)] bg-cover Xbg-fixed bg-[50%] bg-[url('/image/fondo2.jpg')] mb-10 `}
@@ -110,79 +115,9 @@ export default function Home() {
           {filterData().length}
           {")"}
         </div>
+
         {filterData().map((item, index) => (
-          <div key={index} className="w-full border mb-5 lg:mb-0">
-            <div
-              className={`relative Xw-[300px] Xh-[250px] b g-[url('/image/animales2.jpg')]  ${item.bgAvatar} bg-cover Xbg-fixed bg-[50%] `}
-            >
-              <img
-                src={`./image/${item.image}`}
-                alt=""
-                //className="w-[300px] h-[250px]"
-                style={{
-                  width: "380px",
-                  height: "240px",
-                  objectFit: "cover", // cover, contain, none
-                  objectPosition: "50% 20%",
-                }}
-              />
-              {/* cart.some((p) => p.name === item.name) ? (
-                <button
-                  onClick={() => dispatch(removeFromCart(item.name))}
-                  className="absolute top-1 right-1 bg-red-500 text-white text-sm font-bold  rounded-md px-3 py-1 cursor-pointer active:animate-ping"
-                >
-                  Quitar del carrito
-                </button>
-              ) : (
-                <button
-                  disabled={!item.inStock}
-                  onClick={() => dispatch(addToCart(item))}
-                  className={`absolute top-1 right-1 text-white text-sm font-bold rounded-md px-3 py-1 ${
-                    item.inStock
-                      ? "bg-sky-600 cursor-pointer active:animate-ping"
-                      : "bg-gray-500"
-                  } `}
-                >
-                  {!item.inStock ? "Agotado" : "Agregar al carrito"}
-                </button>
-              ) */}
-            </div>
-
-            <div className=" Xrelative p-5">
-              <h1 className="font-bold mb-1"> {item.name}</h1>
-              <div className="flex flex-col Xjustify-between mb-3">
-                {/** price.split(".")[0] */}
-                <h1 className={`text-sm text-gray-700 `}>$ {item.price}.00</h1>
-                <h1 className="text-xs text-gray-700">Delivery en 5 dias</h1>
-                <div className="pointer-events-none flex flex-row items-center text-blue-600">
-                  <Rating rating={item.rating} />
-                </div>
-              </div>
-
-              <div className="Xabsolute Xbottom-5 Xright-5">
-                {cart.some((p) => p.name === item.name) ? (
-                  <button
-                    onClick={() => dispatch(removeFromCart(item.name))}
-                    className=" bg-red-500 text-white text-sm font-bold rounded-sm px-3 py-1.5 cursor-pointer active:animate-ping"
-                  >
-                    Quitar del carrito
-                  </button>
-                ) : (
-                  <button
-                    disabled={!item.inStock}
-                    onClick={() => dispatch(addToCart(item))}
-                    className={` text-white text-sm font-bold rounded-sm px-3 py-1.5 ${
-                      item.inStock
-                        ? "bg-teal-500 cursor-pointer active:animate-ping"
-                        : "bg-indigo-600"
-                    } `}
-                  >
-                    {!item.inStock ? "Agotado" : "Agregar al carrito"}
-                  </button>
-                )}
-              </div>
-            </div>
-          </div>
+          <SingleProduct prod={item} key={index} />
         ))}
       </div>
 

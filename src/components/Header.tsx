@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useAppDispatch } from "@/redux/hooks";
 import { filterByCategory, filterByStock } from "@/redux/features/filterSlice";
 import Link from "next/link";
+import Image from "next/image";
 
 const Header = () => {
   const [showList, setShowList] = useState(false);
@@ -13,12 +14,23 @@ const Header = () => {
       <div className="w-full lg:max-w-[1024px] py-5 lg:flex lg:flex-row">
         {/** LOGO */}
         <div className="w-full flex flex-col lg:flex-row items-center gap-2">
-          <div className="Xbg-sky-300">
+          {/** <div className="Xbg-sky-300">
             <img
               src="./image/logo.jpg"
               width={100}
               height={100}
               alt="logo"
+              className="rounded-lg rounded-bl-[40px] rounded-tr-[40px]"
+            />
+          </div> */}
+          <div className="relative w-[100px] h-[100px] ">
+            <Image
+              src={require("/public/image/logo.jpg")}
+              alt="Amigurumi"
+              //fill
+              sizes=""
+              priority
+              //style={{ objectFit: "cover", objectPosition: "50% 50%", }}
               className="rounded-lg rounded-bl-[40px] rounded-tr-[40px]"
             />
           </div>

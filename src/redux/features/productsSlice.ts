@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-//const initialState = { amig: 0, carrito:[] };
+//const initialState = { amig: 0, carrito:[] }; jpg - avif
 const initialState = [
   {
     name: "Lindos Nonos Amigurumi",
@@ -59,9 +59,9 @@ const initialState = [
   },
   {
     name: "Animales Grupo #6",
-    image: "animales6.avif",
+    image: "animales6.jpg",
     price: 30,
-    bgAvatar: "bg-[url('/image/animales6.avif')]",
+    bgAvatar: "bg-[url('/image/animales6.jpg')]",
     inStock: true,
     rating: 3,
     category: "Colecciones",
@@ -275,9 +275,9 @@ const initialState = [
   },
   {
     name: "Gotic Amigurumi #2",
-    image: "gotic2.avif",
+    image: "gotic2.jpg",
     price: 45,
-    bgAvatar: "bg-[url('/image/gotic2.avif')]",
+    bgAvatar: "bg-[url('/image/gotic2.jpg')]",
     inStock: true,
     rating: 5,
     category: "Colecciones",
@@ -441,19 +441,12 @@ export const productsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
-    listProducts: (state) => state,
-    //increment: (state) => {
-    //  state.amig += 1;
-    //},
-    /*filterByCategory: (state, action) => {
-      state.filter((item) => item.category === action.payload);
+    oneProduct: (state, action) => {
+      return state.filter((item) => item.name === action.payload);
     },
-    filterByStock: (state) => state,
-    filterByRating: (state) => state,
-    filterBySearch: (state) => state, */
   },
 });
 
-export const { listProducts } = productsSlice.actions;
+export const { oneProduct } = productsSlice.actions;
 
 export default productsSlice.reducer;

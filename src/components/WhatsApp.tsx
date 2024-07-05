@@ -6,19 +6,19 @@ const WhatsApp = () => {
   const cart = useAppSelector((state) => state.carrito);
   //let phone="51990441430"
   let phone = "393801836002";
-  let message: string = "Hola%0Aquiero comprar tu producto.%0A"; //%0A= saltar linea
+  let message: string = "Hola quiero comprar tu producto.%0A%0A"; //%0A= saltar linea
 
   useEffect(() => {
     setSubTotal(cart.reduce((acc, curr) => acc + curr.price * curr.count, 0));
-    console.log(subTotal);
+    //console.log(subTotal);
   }, [cart]);
 
   if (cart.length !== 0) {
     cart.map(
       (i) =>
-        (message += "  " + i.count + "x" + i.name.replace("#", "n") + "%0A")
+        (message += "> " + i.count + "x" + i.name.replace("#", "n") + "%0A")
     );
-    message += "SUBTOTAL: $" + subTotal + ".00 %0A%0AGracias";
+    message += "%0ASUBTOTAL: $" + subTotal + ".00";
   }
 
   //href={`https://wa.me/51990441430?text=${message}`}
