@@ -14,7 +14,7 @@ import Carrito from "@/components/Carrito";
 //const cargarImagen = require.context("./tu_patch_assets", true);
 //<img src={cargarImagen(`./${ nombre_imagen }.jpg`)} alt={nombre_imagen} />
 
-const page = ({ params }: any) => {
+const Product = ({ params }: any) => {
   const data = useAppSelector((state) => state.products);
   const cart = useAppSelector((state) => state.carrito);
   const [qty, setQty] = useState(1);
@@ -173,4 +173,4 @@ const page = ({ params }: any) => {
   );
 };
 
-export default page;
+export default Product;
