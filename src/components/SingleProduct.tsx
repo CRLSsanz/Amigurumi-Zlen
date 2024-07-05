@@ -39,7 +39,7 @@ const SingleProduct = ({ prod }: any) => {
         />
 
         <Link
-          href={`/product/${prod.name.replace("#", "%23")}`}
+          href={`/product/${prod.name.replaceAll(" ", "-").toLowerCase()}`}
           className="absolute top-3 right-3 cursor-pointer flex items-center justify-center w-10 h-10 bg-gray-100 hover:bg-red-400 active:animate-ping text-gray-500 hover:text-white rounded-full "
         >
           <svg

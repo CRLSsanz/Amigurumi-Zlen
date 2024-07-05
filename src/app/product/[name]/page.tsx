@@ -21,8 +21,10 @@ const page = ({ params }: any) => {
 
   const dispatch = useAppDispatch();
 
-  let name = params.name.replace("%23", "#");
-  let name2 = name.replaceAll("%20", " ");
+  let name = params.name.replaceAll("-", " ");
+  //console.log(name);
+  let name2 = name.replace(/\b[a-z]/g, (c: any) => c.toUpperCase());
+  //console.log(name2);
 
   const [item] = data.filter((item) => item.name === name2);
 
@@ -30,7 +32,7 @@ const page = ({ params }: any) => {
     <div className="">
       <div className="flex w-full bg-red-300">
         <Image
-          //src={require("/public/image/animales6.avif")}
+          //src={require("/public/image/boy2.jpg")}
           src={require(`/public/image/${item.image}`)}
           alt="Amigurumi"
           //fill

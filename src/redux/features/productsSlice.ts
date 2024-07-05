@@ -13,7 +13,7 @@ const initialState = [
   },
 
   {
-    name: "Animales Grupo #1",
+    name: "Animales Grupo 1",
     image: "animales1.jpg",
     price: 25,
     bgAvatar: "bg-[url('/image/animales1.jpg')]",
@@ -22,7 +22,7 @@ const initialState = [
     category: "Colecciones",
   },
   {
-    name: "Animales Grupo #2",
+    name: "Animales Grupo 2",
     image: "animales2.jpg",
     price: 43,
     bgAvatar: "bg-[url('/image/animales2.jpg')]",
@@ -31,7 +31,7 @@ const initialState = [
     category: "Colecciones",
   },
   {
-    name: "Animales Grupo #3",
+    name: "Animales Grupo 3",
     image: "animales3.jpg",
     price: 44,
     bgAvatar: "bg-[url('/image/animales3.jpg')]",
@@ -40,7 +40,7 @@ const initialState = [
     category: "Colecciones",
   },
   {
-    name: "Animales Grupo #4",
+    name: "Animales Grupo 4",
     image: "animales4.jpg",
     price: 30,
     bgAvatar: "bg-[url('/image/animales4.jpg')]",
@@ -49,7 +49,7 @@ const initialState = [
     category: "Colecciones",
   },
   {
-    name: "Animales Grupo #5",
+    name: "Animales Grupo 5",
     image: "animales5.jpg",
     price: 30,
     bgAvatar: "bg-[url('/image/animales5.jpg')]",
@@ -58,7 +58,7 @@ const initialState = [
     category: "Colecciones",
   },
   {
-    name: "Animales Grupo #6",
+    name: "Animales Grupo 6",
     image: "animales6.jpg",
     price: 30,
     bgAvatar: "bg-[url('/image/animales6.jpg')]",
@@ -148,7 +148,7 @@ const initialState = [
     category: "Animaciones",
   },
   {
-    name: "Chuky Boy Amigurumi #2",
+    name: "Chuky Boy Amigurumi 2",
     image: "chuky3.jpg",
     price: 65,
     bgAvatar: "bg-[url('/image/chuky3.jpg')]",
@@ -265,7 +265,7 @@ const initialState = [
     category: "Divertidos",
   },
   {
-    name: "Gotic Amigurumi #1",
+    name: "Gotic Amigurumi 1",
     image: "gotic1.jpg",
     price: 45,
     bgAvatar: "bg-[url('/image/gotic1.jpg')]",
@@ -274,7 +274,7 @@ const initialState = [
     category: "Colecciones",
   },
   {
-    name: "Gotic Amigurumi #2",
+    name: "Gotic Amigurumi 2",
     image: "gotic2.jpg",
     price: 45,
     bgAvatar: "bg-[url('/image/gotic2.jpg')]",
@@ -283,7 +283,7 @@ const initialState = [
     category: "Colecciones",
   },
   {
-    name: "Mono y su Banana Amigurumi #2",
+    name: "Mono y su Banana Amigurumi 2",
     image: "monky2.jpg",
     price: 45,
     bgAvatar: "bg-[url('/image/monky2.jpg')]",
@@ -328,7 +328,7 @@ const initialState = [
     category: "Animaciones",
   },
   {
-    name: "Pokemon Amigurumi #4",
+    name: "Pokemon Amigurumi 4",
     image: "pokemon4.jpg",
     price: 45,
     bgAvatar: "bg-[url('/image/pokemon4.jpg')]",
@@ -427,7 +427,7 @@ const initialState = [
     category: "Animales",
   },
   {
-    name: "Winnie Pooh Amigurumi #1",
+    name: "Winnie Pooh Amigurumi 1",
     image: "winniepooh1.jpg",
     price: 30,
     bgAvatar: "bg-[url('/image/winniepooh1.jpg')]",
