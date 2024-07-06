@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useAppSelector, useAppDispatch } from "@/redux/hooks";
 import { changeCartQty, removeFromCart } from "@/redux/features/cartSlice";
 import Link from "next/link";
+import Image from "next/image";
 
 const Cart = () => {
   const [subTotal, setSubTotal] = useState(0);
@@ -30,64 +31,123 @@ const Cart = () => {
   return (
     <section className="w-full bg-gray-100 flex flex-col items-center">
       <div className="w-full lg:max-w-[1024px] ">
-        <h1
+        <div
           id="view"
-          className=" text-start border-b-2 border-gray-500 p-5 mb-5"
+          className="flex flex-row items-center justify-between  p-5 mb-5"
         >
-          Carrito de Compras
-          <span className="font-bold text-gray-400">
-            {` (${cart.length})  `}
+          <h1>Tu Carrito</h1>
+          <span className="text-xs font-bold text-gray-400">
+            Seguir comprando
           </span>
-        </h1>
+        </div>
         <div className="w-full lg:max-w-[1024px] lg:flex lg:flex-row">
           {/** TABLA */}
-          <table className="hidden lg:basis-2/3 lg:block table-auto border-collapse">
+          <table className="Xhidden lg:basis-2/3 lg:block table-fixed border-collapse">
             <thead>
-              <tr className="text-sm border border-gray-200 bg-gray-200">
-                <th className="py-4 pr-4"></th>
-                <th className="py-4 pr-4"></th>
-                <th className="py-4 pr-4">Producto</th>
-                <th className="py-4 pr-4">Precio</th>
-                <th className="py-4 pr-4">Cantidad</th>
-                <th className="py-4 pr-4">Subtotal</th>
+              <tr className="text-[10px] uppercase tracking-widest border-b text-gray-400 ">
+                <th className="py-4 pl-5 text-start">
+                  Producto {` (${cart.length})  `}
+                </th>
+                <th className="py-4 pr-5 text-end text-transparent lg:text-gray-400">
+                  Cantidad
+                </th>
+                <th className="py-4 pr-5 text-end">Total</th>
               </tr>
             </thead>
             <tbody>
               {cart.map((item, index) => (
-                <tr key={index} className="text-xs border border-gray-200 ">
-                  <td className="py-2 px-5">
-                    <div
-                      onClick={() => dispatch(removeFromCart(item.name))}
-                      className="w-6 h-6 flex justify-center items-center text-gray-400 border rounded-full border-gray-400 cursor-pointer"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={1.5}
-                        stroke="currentColor"
-                        className="size-5"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M6 18 18 6M6 6l12 12"
-                        />
-                      </svg>
+                <tr key={index} className="text-sm ">
+                  <td className="pt-10 pl-5 align-top">
+                    <div className="relative w-28 h-28 lg:h-28 lg:w-36">
+                      <Image
+                        src={require(`/public/image/${item.image}`)}
+                        alt="Amigurumi"
+                        fill
+                        sizes=""
+                        //width={250}
+                        //height={200}
+                        style={{
+                          objectFit: "cover", // cover, contain, none
+                          objectPosition: "50% 50%",
+                        }}
+                      />
                     </div>
                   </td>
-                  <td className="py-2">
-                    <img
-                      src={`./image/${item.image}`}
-                      alt=""
-                      className="w-28 h-20 rounded-lg "
-                    />
+
+                  <td className="w-full pt-10 pl-4 align-top">
+                    <div className="w-full flex flex-col lg:flex-row lg:justify-between ">
+                      <div className="Xmb-3">
+                        <h1 className="w-32 lg:w-44 mb-2">{item.name}</h1>
+                        <h1 className="text-gray-600 text-xs mb-2">
+                          ${item.price}.00
+                        </h1>
+                        <h1 className="hidden lg:block text-gray-600 text-xs">
+                          Contenido: {item.category}
+                        </h1>
+                      </div>
+
+                      <div className="flex flex-row items-center">
+                        <div className="border-[1px] border-gray-500 flex flex-row items-center justify-center text-center mr-5">
+                          <button
+                            onClick={() =>
+                              dispatch(
+                                changeCartQty({
+                                  name: item.name,
+                                  qty: item.qty - 1,
+                                })
+                              )
+                            }
+                            disabled={item.qty === 1 ? true : false}
+                            className="w-9 h-9 text-base"
+                          >
+                            -
+                          </button>
+
+                          <span className="w-10 h-7 py-1.5 text-xs">
+                            {item.qty}
+                          </span>
+
+                          <button
+                            onClick={() =>
+                              dispatch(
+                                changeCartQty({
+                                  name: item.name,
+                                  qty: item.qty + 1,
+                                })
+                              )
+                            }
+                            disabled={item.qty === 5 ? true : false}
+                            className="w-9 h-9 text-base"
+                          >
+                            +
+                          </button>
+                        </div>
+
+                        <div
+                          onClick={() => dispatch(removeFromCart(item.name))}
+                          className="w-6 h-6 flex justify-center items-center text-gray-600  cursor-pointer"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={1.5}
+                            stroke="currentColor"
+                            className="size-4"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
+                            />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
                   </td>
-                  <td className="py-2 px-5 w-auto">{item.name}</td>
-                  <td className="py-2 pr-3 tracking-wider">${item.price}.00</td>
-                  <td className="py-2 pr-3">{item.qty}</td>
-                  <td className="py-2 pr-3 tracking-wider">
-                    ${item.price * item.qty}.00
+
+                  <td className="pt-10 pr-5 tracking-wider text-end align-top">
+                    <div className="">${item.price * item.qty}.00</div>
                   </td>
                 </tr>
               ))}
@@ -95,7 +155,7 @@ const Cart = () => {
           </table>
 
           {/** LIST ON MOVIL*/}
-          <div className="w-full lg:hidden p-5">
+          <div className="w-full hidden p-5">
             {cart?.map((item, index) => (
               <div
                 key={index}
@@ -197,7 +257,7 @@ const Cart = () => {
           </div>
 
           {/** SUBTOTAL */}
-          <div className="lg:basis-1/3 p-5 lg:p-0 lg:ml-5 mb-20">
+          <div className="lg:basis-1/3 px-5 pt-10 lg:p-0 lg:ml-5 mb-20">
             <div className="text-xs flex flex-col justify-center items-center border-2">
               <h1 className="text-base w-full py-3 px-3 bg-gray-200">
                 Totales del Carrito
@@ -228,7 +288,7 @@ const Cart = () => {
           </div>
 
           {/** VOLVER */}
-          <div className="w-full flex justify-center p-3 mb-5">
+          <div className="lg:hidden w-full flex justify-center p-3 mb-5">
             <Link href="/#view" className=" p-2 px-5 bg-gray-400  rounded-full">
               <h1 className=" text-sm text-center text-white whitespace-nowrap">
                 Volver a la tienda

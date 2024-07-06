@@ -18,7 +18,7 @@ const SingleProduct = ({ prod }: any) => {
 
   return (
     <div className="w-full border mb-5 lg:mb-0">
-      <div className={`relative max-w-[380px] h-[250px] bg-red-300 `}>
+      <div className={`relative max-w-[380px] h-[250px] bg-gray-200 `}>
         {/** <img
           src={`./image/${prod.image}`}
           alt=""
