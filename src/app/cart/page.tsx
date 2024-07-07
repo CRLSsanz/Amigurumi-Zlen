@@ -28,12 +28,23 @@ const Cart = () => {
       </div>
     );
 
+  const disminuirItem = (name: any, qty: any) => {
+    dispatch(
+      changeCartQty({
+        name: name,
+        qty: qty - 1,
+      })
+    );
+
+    if (qty === 1) dispatch(removeFromCart(name));
+  };
+
   return (
     <section className="w-full bg-gray-100 flex flex-col items-center">
       <div className="w-full lg:max-w-[1024px] ">
         <div
           id="view"
-          className="flex flex-row items-center justify-between  p-5 mb-5"
+          className="flex flex-row items-center justify-between  p-5"
         >
           <h1>Tu Carrito</h1>
           <span className="text-xs font-bold text-gray-400">
@@ -45,9 +56,7 @@ const Cart = () => {
           <table className="Xhidden lg:basis-2/3 lg:block table-fixed border-collapse">
             <thead>
               <tr className="text-[10px] uppercase tracking-widest border-b text-gray-400 ">
-                <th className="py-4 pl-5 text-start">
-                  Producto {` (${cart.length})  `}
-                </th>
+                <th className="py-4 pl-5 text-start">Producto </th>
                 <th className="py-4 pr-5 text-end text-transparent lg:text-gray-400">
                   Cantidad
                 </th>
@@ -56,8 +65,11 @@ const Cart = () => {
             </thead>
             <tbody>
               {cart.map((item, index) => (
-                <tr key={index} className="text-sm ">
-                  <td className="pt-10 pl-5 align-top">
+                <tr
+                  key={index}
+                  className="text-sm transition-all duration-500 Xborder-b-2 "
+                >
+                  <td className="py-5 pl-5 align-top">
                     <div className="relative w-28 h-28 lg:h-28 lg:w-36">
                       <Image
                         src={require(`/public/image/${item.image}`)}
@@ -74,10 +86,17 @@ const Cart = () => {
                     </div>
                   </td>
 
-                  <td className="w-full pt-10 pl-4 align-top">
+                  <td className="w-full py-5 pl-5 align-top">
                     <div className="w-full flex flex-col lg:flex-row lg:justify-between ">
                       <div className="Xmb-3">
-                        <h1 className="w-32 lg:w-44 mb-2">{item.name}</h1>
+                        <Link
+                          href={`/product/${item.name
+                            .replaceAll(" ", "-")
+                            .toLowerCase()}`}
+                          className="w-32 lg:w-44 mb-2 font-bold"
+                        >
+                          {item.name}
+                        </Link>
                         <h1 className="text-gray-600 text-xs mb-2">
                           ${item.price}.00
                         </h1>
@@ -89,23 +108,16 @@ const Cart = () => {
                       <div className="flex flex-row items-center">
                         <div className="border-[1px] border-gray-500 flex flex-row items-center justify-center text-center mr-5">
                           <button
-                            onClick={() =>
-                              dispatch(
-                                changeCartQty({
-                                  name: item.name,
-                                  qty: item.qty - 1,
-                                })
-                              )
-                            }
-                            disabled={item.qty === 1 ? true : false}
+                            onClick={() => disminuirItem(item.name, item.qty)}
+                            disabled={item.qty < 0 ? true : false}
                             className="w-9 h-9 text-base"
                           >
                             -
                           </button>
 
-                          <span className="w-10 h-7 py-1.5 text-xs">
+                          <h1 className="w-10 h-7 py-1.5 text-xs">
                             {item.qty}
-                          </span>
+                          </h1>
 
                           <button
                             onClick={() =>
@@ -146,115 +158,13 @@ const Cart = () => {
                     </div>
                   </td>
 
-                  <td className="pt-10 pr-5 tracking-wider text-end align-top">
+                  <td className="py-5 pr-5 tracking-wider text-end align-top">
                     <div className="">${item.price * item.qty}.00</div>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
-
-          {/** LIST ON MOVIL*/}
-          <div className="w-full hidden p-5">
-            {cart?.map((item, index) => (
-              <div
-                key={index}
-                className="w-full text-xs flex flex-col justify-center items-center border-2 mb-10"
-              >
-                <div className="w-full pl-3 flex flex-row items-center border-b-2">
-                  <div
-                    onClick={() => dispatch(removeFromCart(item.name))}
-                    className="w-6 h-6 flex justify-center items-center text-gray-400 border rounded-full border-gray-400 cursor-pointer"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="size-5"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M6 18 18 6M6 6l12 12"
-                      />
-                    </svg>
-                  </div>
-                  <div className="w-full flex flex-row justify-between p-3">
-                    <h1 className="font-bold">Producto:</h1>
-                    <h1 className="">{item.name}</h1>
-                  </div>
-                </div>
-                <div className="w-full flex flex-row">
-                  <div className="basis-1/2 Xp-3">
-                    <img
-                      src={`./image/${item.image}`}
-                      alt="Amigurumi"
-                      className="w-full h-36"
-                      style={{
-                        //width: "320px",
-                        //height: "240px",
-                        objectFit: "cover", // cover, contain, none
-                        objectPosition: "50% 20%",
-                      }}
-                    />
-                  </div>
-
-                  <div className="basis-1/2 w-full ">
-                    <div className="w-full flex flex-row justify-between p-3 border-b-2">
-                      <h1 className="font-bold ">Precio:</h1>
-                      <h1 className="tracking-wider">${item.price}.00</h1>
-                    </div>
-                    <div className="w-full flex flex-row items-center justify-between pr-1 py-3 border-b-2">
-                      <h1 className="font-bold pl-3">Cantidad:</h1>
-                      <div className="border-2 flex flex-row items-center justify-center text-center">
-                        <button
-                          onClick={() =>
-                            dispatch(
-                              changeCartQty({
-                                name: item.name,
-                                qty: item.qty - 1,
-                              })
-                            )
-                          }
-                          disabled={item.qty === 1 ? true : false}
-                          className="w-7 h-7 text-lg"
-                        >
-                          -
-                        </button>
-
-                        <span className="w-7 h-7 py-1.5 border-l-2 border-r-2">
-                          {item.qty}
-                        </span>
-
-                        <button
-                          onClick={() =>
-                            dispatch(
-                              changeCartQty({
-                                name: item.name,
-                                qty: item.qty + 1,
-                              })
-                            )
-                          }
-                          disabled={item.qty === 5 ? true : false}
-                          className="w-7 h-7 text-lg"
-                        >
-                          +
-                        </button>
-                      </div>
-                    </div>
-                    <div className="w-full flex flex-row justify-between p-3">
-                      <h1 className="font-bold">SubTotal:</h1>
-                      <h1 className="tracking-wider">
-                        ${item.price * item.qty}.00
-                      </h1>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
 
           {/** SUBTOTAL */}
           <div className="lg:basis-1/3 px-5 pt-10 lg:p-0 lg:ml-5 mb-20">

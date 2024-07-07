@@ -89,14 +89,12 @@ const Product = ({ params }: any) => {
                     : setQty(qty - 1)
                 }
                 disabled={qty === 1 ? true : false}
-                className="w-7 h-7 text-lg"
+                className="w-9 h-9 text-lg"
               >
                 -
               </button>
 
-              <span className="w-7 h-7 py-1.5 border-l-2 border-r-2">
-                {qty}
-              </span>
+              <span className="w-10 h-7 py-1.5 text-sm ">{qty}</span>
 
               <button
                 //onClick={() => setQty(qty + 1)}
@@ -111,7 +109,7 @@ const Product = ({ params }: any) => {
                     : setQty(qty + 1)
                 }
                 disabled={qty === 5 ? true : false}
-                className="w-7 h-7 text-lg"
+                className="w-9 h-9 text-lg"
               >
                 +
               </button>
@@ -123,7 +121,7 @@ const Product = ({ params }: any) => {
             {cart.some((p) => p.name === item.name) ? (
               <button
                 onClick={() => dispatch(removeFromCart(item.name))}
-                className="w-full  bg-red-500 text-white text-sm font-bold rounded-sm px-3 py-1.5 cursor-pointer active:animate-ping"
+                className="w-full  bg-red-500 text-white text-sm font-bold rounded-sm px-3 py-2 cursor-pointer active:animate-ping"
               >
                 Quitar del carrito
               </button>
@@ -131,7 +129,7 @@ const Product = ({ params }: any) => {
               <button
                 disabled={!item.inStock}
                 onClick={() => dispatch(addToCart({ ...item, qty }))}
-                className={`w-full text-white text-sm font-bold rounded-sm px-3 py-1.5 ${
+                className={`w-full text-white text-sm font-bold rounded-sm px-3 py-2 ${
                   item.inStock
                     ? "bg-blue-500 cursor-pointer active:animate-ping"
                     : "bg-blue-400"
