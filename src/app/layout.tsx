@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Comfortaa, Poppins } from "next/font/google";
+import { Inter, Comfortaa, Raleway } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/redux/providers";
 import Header from "@/components/Header";

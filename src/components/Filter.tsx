@@ -130,12 +130,12 @@ const Filter = () => {
           />
         </div>
 
-        <div
+        <button
           onClick={() => dispatch(clearFilter())}
-          className="text-center px-4 py-2 rounded-sm bg-teal-500 text-white mb-10"
+          className="w-full text-center px-4 py-2 rounded-sm bg-teal-500 text-white mb-10"
         >
           Ver Todo
-        </div>
+        </button>
       </div>
     </>
   );

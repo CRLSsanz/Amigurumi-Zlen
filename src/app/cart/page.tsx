@@ -4,6 +4,7 @@ import { useAppSelector, useAppDispatch } from "@/redux/hooks";
 import { changeCartQty, removeFromCart } from "@/redux/features/cartSlice";
 import Link from "next/link";
 import Image from "next/image";
+import WhatsApp from "@/components/WhatsApp";
 
 const Cart = () => {
   const [subTotal, setSubTotal] = useState(0);
@@ -47,9 +48,12 @@ const Cart = () => {
           className="flex flex-row items-center justify-between  p-5"
         >
           <h1>Tu Carrito</h1>
-          <span className="text-xs font-bold text-gray-400">
-            Seguir comprando
-          </span>
+          <Link
+            href="/#view"
+            className="hidden underline text-xs font-bold Xtext-gray-400"
+          >
+            Seguir Comprando
+          </Link>
         </div>
         <div className="w-full lg:max-w-[1024px] lg:flex lg:flex-row">
           {/** TABLA */}
@@ -60,7 +64,7 @@ const Cart = () => {
                 <th className="py-4 pr-5 text-end text-transparent lg:text-gray-400">
                   Cantidad
                 </th>
-                <th className="py-4 pr-5 text-end">Total</th>
+                <th className="py-4 pr-5 text-end">subTotal</th>
               </tr>
             </thead>
             <tbody>
@@ -167,43 +171,86 @@ const Cart = () => {
           </table>
 
           {/** SUBTOTAL */}
-          <div className="lg:basis-1/3 px-5 pt-10 lg:p-0 lg:ml-5 mb-20">
-            <div className="text-xs flex flex-col justify-center items-center border-2">
-              <h1 className="text-base w-full py-3 px-3 bg-gray-200">
-                Totales del Carrito
+          <div className="lg:basis-1/3 p-5 lg:p-0 lg:ml-5 mb-20">
+            <h1 className="hidden w-full p-3  mb-2 shadow-md">
+              O ¿eres una empresa? solicitud de factura
+            </h1>
+
+            <div className="px-5 text-xs bg-gray-200 flex flex-col justify-center items-center">
+              <h1 className="w-full py-4 text-end border-b border-gray-300">
+                {" "}
+                <Link
+                  href="/#view"
+                  className="underline lg:no-underline text-[10px] uppercase font-bold text-gray-500 tracking-widest"
+                >
+                  Seguir Comprando
+                </Link>{" "}
               </h1>
-              <div className="w-full flex flex-row justify-between p-3 border-b-2 border-t-2">
-                <h1 className="font-bold">SubTotal:</h1>
-                <h1 className="tracking-wider">${subTotal}.00</h1>
-              </div>
-              <div className="w-full flex flex-row justify-between p-3 border-b-2">
-                <h1 className="font-bold">Envio:</h1>
+
+              <div className="w-full flex flex-row justify-between py-5 border-b border-gray-300">
+                <h1 className=" font-bold">Envio:</h1>
                 <div className="flex flex-col text-end">
                   <h1 className="">Precio fijo: $8.00</h1>
-                  <h1 className="mb-3">Enviar a Atlantico</h1>
-                  <h1 className="border-b-2">Cambiar direccion</h1>
+                  <h1 className="mb-2">Enviar a Atlantico</h1>
+                  <h1 className="">Cambiar direccion</h1>
                 </div>
               </div>
-              <div className="w-full flex flex-row justify-between p-3 border-b-2">
+
+              <div className="w-full text-base font-bold flex flex-row justify-between py-3">
                 <h1 className="font-bold">Total:</h1>
                 <h1 className="tracking-wider">${subTotal + 8}.00</h1>
               </div>
-              <div className="w-full flex flex-col px-3 py-5">
-                <h1 className="font-bold mb-5">Tienes un cupon?</h1>
-                <h1 className="text-center text-white py-3 rounded-full bg-teal-500 cursor-pointer">
-                  Finalizar Pedido
+
+              <div className="flex mb-3">
+                <input
+                  id="default-checkbox"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-700 rounded focus:ring-blue-500 focus:ring-2"
+                />
+                <label
+                  htmlFor="default-checkbox"
+                  className="ms-2 text-xs cursor-pointer"
+                >
+                  He leido y acepto las{" "}
+                  <strong className="underline">Condiciones de venta</strong>
+                </label>
+              </div>
+              <div className="flex mb-5">
+                <input
+                  id="default-checkbox2"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-700 rounded focus:ring-blue-500 focus:ring-2"
+                />
+                <label
+                  htmlFor="default-checkbox2"
+                  className="ms-2 text-xs cursor-pointer"
+                >
+                  He leido y acepto las{" "}
+                  <strong className="underline">Politica de Privacidad</strong>
+                </label>
+              </div>
+
+              <div className="w-full text-white text-center font-bold flex flex-col">
+                <h1 className=" py-3 rounded-full bg-blue-500 hover:bg-blue-700 cursor-pointer mb-5">
+                  Procede a Checkout
                 </h1>
+
+                <div className="flex flex-row justify-center items-center py-1.5 rounded-full bg-green-500 hover:bg-emerald-600 cursor-pointer mb-5">
+                  <WhatsApp text={"Pedir por Whatsapp "} size={28} />
+                </div>
+
+                <Link
+                  href="/#view"
+                  className=" hidden w-full p-2 px-5 bg-gray-400  rounded-full"
+                >
+                  <h1 className=" text-sm text-center text-white whitespace-nowrap">
+                    Volver a la tienda
+                  </h1>
+                </Link>
               </div>
             </div>
-          </div>
-
-          {/** VOLVER */}
-          <div className="lg:hidden w-full flex justify-center p-3 mb-5">
-            <Link href="/#view" className=" p-2 px-5 bg-gray-400  rounded-full">
-              <h1 className=" text-sm text-center text-white whitespace-nowrap">
-                Volver a la tienda
-              </h1>
-            </Link>
           </div>
         </div>
       </div>

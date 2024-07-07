@@ -52,20 +52,25 @@ const Product = ({ params }: any) => {
       </div>
 
       <div className="py-10 px-5">
-        <h1 className="uppercase font-bold mb-5">{item.name}</h1>
-
+        <h1 className="uppercase font-bold">{item.name}</h1>
+        <h2 className="text-xs text-gray-500 mb-5">
+          Codigo del producto: 0462-83
+        </h2>
         <div className="text-sm text-gray-700 mb-5">
           <h1 className="mb-2">
-            Materiales: 100% algodón con relleno siliconado
+            <strong>Materiales:</strong> 100% algodón <br /> con relleno
+            siliconado
           </h1>
-          <h1 className="mb-2">Tamaño Amigurumi: 26 cm</h1>
+          <h1 className="mb-2">
+            <strong>Tamaño Amigurumi:</strong> 26 cm
+          </h1>
           <h1 className="">
             Todos nuestros Amigurumis se enviarán de 10 a 15 días después de su
             pago
           </h1>
         </div>
 
-        <h1 className={`text-lg text-teal-600 font-bold mb-2 `}>
+        <h1 className={`text-lg text-blue-600 font-bold `}>
           $ {item.price}.00
         </h1>
         <div className="pointer-events-none flex flex-row items-center text-gray-500 mb-5">
@@ -189,7 +194,8 @@ const Product = ({ params }: any) => {
           </span>
           <br />
           <br />
-          Todos nuestros Copitos se enviarán de 10 a 15 días después de su pago
+          Todos nuestros Amigurumis se enviarán de 10 a 15 días después de su
+          pago
         </p>
       </div>
 

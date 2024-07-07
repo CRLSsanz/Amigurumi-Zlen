@@ -121,7 +121,15 @@ export default function Home() {
         ))}
       </div>
 
-      <WhatsApp />
+      {/** WHATSAPP */}
+      <div className="fixed bottom-3 right-3 bg-green-500 hover:bg-emerald-500 rounded-full p-1.5">
+        <div className="relative ">
+          <WhatsApp text={""} size={45} />
+          <div className="absolute -top-2 -right-2 h-5 w-5 text-xs bg-red-500 text-white font-bold rounded-full flex justify-center items-center">
+            1
+          </div>
+        </div>
+      </div>
 
       {/** CARRITO NAVBAR */}
       <Carrito />
