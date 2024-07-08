@@ -34,7 +34,7 @@ const Product = ({ params }: any) => {
   const [item] = data.filter((item) => item.name === name2);
 
   return (
-    <div className="">
+    <div className="" id="view">
       <div className="flex w-full bg-gray-200">
         <Image
           //src={require("/public/image/boy2.jpg")}
@@ -62,12 +62,14 @@ const Product = ({ params }: any) => {
             item.price +
             "-26"}
         </h2>
-        <div className="px-5 flex flex-row justify-between">
-          <h1 className={`text-lg font-bold `}>$ {item.price}.00</h1>
+        <div className="pr-5 flex flex-row justify-between">
+          <h1 className={`text-2xl font-extralight tracking-widest `}>
+            ${item.price}.00
+          </h1>
           <div className="mb-2 text-teal-500 pointer-events-none flex flex-col items-center ">
             <Rating rating={item.rating} />
-            <span className="pt-1 pl-2 text-xs text-gray-500 underline">
-              {item.price + 55} Reviews
+            <span className="pt-1 text-xs text-gray-500">
+              {"(" + (item.price - 19) + ")"} Reviews
             </span>
           </div>
         </div>
@@ -135,7 +137,7 @@ const Product = ({ params }: any) => {
             {cart.some((p) => p.name === item.name) ? (
               <button
                 onClick={() => dispatch(removeFromCart(item.name))}
-                className="bg-gradient-to-bl from-pink-600 to-pink-500 Xbg-pink-500 Xuppercase rounded-sm px-5 py-2 cursor-pointer active:animate-ping"
+                className="bg-gradient-to-br from-pink-500 to-red-500 Xbg-pink-500 Xuppercase rounded-sm px-5 py-2 cursor-pointer active:animate-ping"
               >
                 Quitar del carrito
               </button>

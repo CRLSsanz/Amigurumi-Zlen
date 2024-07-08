@@ -38,7 +38,7 @@ const Carrito = () => {
             <h1 className="text-sm mb-5">Tu carrito esta vacio</h1>
             <button
               onClick={() => setShowCar(!showCar)}
-              className="bg-teal-500 px-10 py-2 rounded-full text-sm text-white"
+              className="bg-gradient-to-br from-teal-500 to-indigo-500 px-12 py-2 rounded-full text-sm text-white"
             >
               Seguir comprando
             </button>
@@ -77,34 +77,34 @@ const Carrito = () => {
                     className="w-full flex flex-row Xitems-center Xbg-red-200 mb-5"
                   >
                     <div className="relative min-w-20 h-20 ">
-                      <Image
-                        src={require(`/public/image/${item.image}`)}
-                        alt="Amigurumi"
-                        fill
-                        sizes=""
-                        className="rounded-tl-md rounded-br-md rounded-3xl"
-                        //width={250}
-                        //height={200}
-                        style={{
-                          objectFit: "cover", // cover, contain, none
-                          objectPosition: "50% 50%",
-                        }}
-                      />
-                    </div>
-
-                    <div className="text-sm w-full px-4">
                       <Link
                         href={`/product/${item.name
                           .replaceAll(" ", "-")
-                          .toLowerCase()}`}
-                        className="underline"
+                          .toLowerCase()}#view`}
+                        onClick={() => setShowCar(!showCar)}
                       >
-                        {item.name}
+                        <Image
+                          src={require(`/public/image/${item.image}`)}
+                          alt="Amigurumi"
+                          fill
+                          sizes=""
+                          className="rounded-tl-md rounded-br-md rounded-3xl"
+                          //width={250}
+                          //height={200}
+                          style={{
+                            objectFit: "cover", // cover, contain, none
+                            objectPosition: "50% 50%",
+                          }}
+                        />
                       </Link>
-                      <h1 className=" text-xs text-gray-500 mb-2">
+                    </div>
+
+                    <div className="text-sm w-full px-4">
+                      <h1 className="leading-4 mb-1">{item.name}</h1>
+                      <h1 className="text-xs text-gray-500 mb-1">
                         Cantidad: {item.qty}
                       </h1>
-                      <h1 className=" font-bold tracking-wider">
+                      <h1 className="tracking-wider">
                         ${item.price * item.qty}
                         .00
                       </h1>
@@ -152,7 +152,7 @@ const Carrito = () => {
                 </Link>
 
                 <div className="flex flex-row justify-center items-center py-1 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 cursor-pointer">
-                  <WhatsApp text={"Pedir por Whatsapp  "} size={28} />
+                  <WhatsApp text={"Pedir por WhatsApp  "} size={28} />
                 </div>
               </div>
             </div>

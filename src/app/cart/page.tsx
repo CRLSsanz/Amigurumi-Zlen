@@ -18,13 +18,18 @@ const Cart = () => {
 
   if (cart.length === 0)
     return (
-      <div className="w-full p-5 mb-20">
-        <h1 className="font-bold p-5">Tu carrito</h1>
-        <div className="text-xs w-full border mb-5 p-3">
+      <div className="w-full mb-40">
+        <h1 className="font-bold p-5">Tu Carrito</h1>
+        <div className="uppercase text-[10px] tracking-widest w-full border-b text-gray-400 py-4 pl-5 mb-5">
           tu carrito esta vacio
         </div>
-        <Link href="/#view" className="flex p-3 bg-teal-500  rounded-full">
-          <h1 className="w-full text-center text-white">Volver a la tienda</h1>
+        <Link
+          href="/#view"
+          className="flex p-2 mx-5 bg-gradient-to-br from-teal-500 to-indigo-500  rounded-full"
+        >
+          <h1 className="w-full text-sm text-center text-white">
+            Volver a la tienda
+          </h1>
         </Link>
       </div>
     );
@@ -45,15 +50,9 @@ const Cart = () => {
       <div className="w-full lg:max-w-[1024px] ">
         <div
           id="view"
-          className="flex flex-row items-center justify-between  p-5"
+          className="flex flex-row items-center justify-between p-5"
         >
           <h1>Tu Carrito</h1>
-          <Link
-            href="/#view"
-            className="hidden underline text-xs font-bold Xtext-gray-400"
-          >
-            Seguir Comprando
-          </Link>
         </div>
         <div className="w-full lg:max-w-[1024px] lg:flex lg:flex-row">
           {/** TABLA */}
@@ -75,33 +74,34 @@ const Cart = () => {
                 >
                   <td className="py-5 pl-5 align-top">
                     <div className="relative w-28 h-28 lg:h-28 lg:w-36">
-                      <Image
-                        src={require(`/public/image/${item.image}`)}
-                        alt="Amigurumi"
-                        fill
-                        sizes=""
-                        //width={250}
-                        //height={200}
-                        style={{
-                          objectFit: "cover", // cover, contain, none
-                          objectPosition: "50% 50%",
-                        }}
-                      />
+                      <Link
+                        href={`/product/${item.name
+                          .replaceAll(" ", "-")
+                          .toLowerCase()}#view`}
+                      >
+                        <Image
+                          src={require(`/public/image/${item.image}`)}
+                          alt="Amigurumi"
+                          fill
+                          sizes=""
+                          //width={250}
+                          //height={200}
+                          style={{
+                            objectFit: "cover", // cover, contain, none
+                            objectPosition: "50% 50%",
+                          }}
+                        />
+                      </Link>
                     </div>
                   </td>
 
                   <td className="w-full py-5 pl-5 align-top">
                     <div className="w-full flex flex-col lg:flex-row lg:justify-between ">
                       <div className="Xmb-3">
-                        <Link
-                          href={`/product/${item.name
-                            .replaceAll(" ", "-")
-                            .toLowerCase()}`}
-                          className="w-32 lg:w-44 mb-2 font-bold"
-                        >
+                        <h1 className="w-32 lg:w-44 mb-2 leading-4 font-bold">
                           {item.name}
-                        </Link>
-                        <h1 className="text-gray-600 text-xs mb-2">
+                        </h1>
+                        <h1 className="text-gray-600 text-xs mb-2 tracking-widest">
                           ${item.price}.00
                         </h1>
                         <h1 className="hidden lg:block text-gray-600 text-xs">
@@ -171,20 +171,14 @@ const Cart = () => {
           </table>
 
           {/** SUBTOTAL */}
-          <div className="lg:basis-1/3 p-5 lg:p-0 lg:ml-5 mb-20">
+          <div className="lg:basis-1/3 p-5 lg:p-0 lg:ml-5 ">
             <h1 className="hidden w-full p-3  mb-2 shadow-md">
               O ¿eres una empresa? solicitud de factura
             </h1>
 
             <div className="px-5 text-xs bg-gray-200 flex flex-col justify-center items-center">
-              <h1 className="w-full py-4 text-end border-b border-gray-300">
+              <h1 className="w-full Xpy-4 h-12 text-end border-b border-gray-300">
                 {" "}
-                <Link
-                  href="/#view"
-                  className="underline lg:no-underline text-[10px] uppercase font-bold text-gray-500 tracking-widest"
-                >
-                  Seguir Comprando
-                </Link>{" "}
               </h1>
 
               <div className="w-full flex flex-row justify-between py-5 border-b border-gray-300">
@@ -254,6 +248,12 @@ const Cart = () => {
           </div>
         </div>
       </div>
+
+      <Link href="/#view" className="w-full flex px-5 mb-10">
+        <h1 className="w-full text-center text-sm py-2 mb-5 border border-gray-500 active:bg-teal-400 active:text-white active:border-transparent rounded-sm">
+          Volver a la tienda
+        </h1>
+      </Link>
     </section>
   );
 };

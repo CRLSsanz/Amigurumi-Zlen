@@ -28,7 +28,7 @@ const Filter = () => {
             value={searchQuery}
             onChange={(e) => dispatch(filterBySearch(e.target.value))}
             type="text"
-            className="w-full p-2 border-2 bg-white"
+            className="w-full py-2 px-4 border-2 text-sm bg-white"
             placeholder="Buscar Amigurumi"
           />
           <span className="absolute top-2 right-2 text-gray-300">
@@ -54,7 +54,7 @@ const Filter = () => {
             id="default-checkbox"
             type="checkbox"
             value=""
-            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
             onChange={() => dispatch(filterByAlfabeto(byA_Z))}
             checked={byA_Z}
           />
@@ -132,7 +132,7 @@ const Filter = () => {
 
         <button
           onClick={() => dispatch(clearFilter())}
-          className="w-full text-center font-bold border border-gray-500 text-gray-600 active:bg-teal-400 active:text-white active:border-transparent px-4 py-1.5 rounded-sm  mb-10"
+          className="w-full text-center text-sm font-bold border border-gray-500 text-gray-600 active:bg-teal-400 active:text-white active:border-transparent px-4 py-2 rounded-sm  mb-10"
         >
           Ver Todo
         </button>

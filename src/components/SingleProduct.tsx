@@ -44,7 +44,7 @@ const SingleProduct = ({ prod }: any) => {
         />
 
         <Link
-          href={`/product/${prod.name.replaceAll(" ", "-").toLowerCase()}`}
+          href={`/product/${prod.name.replaceAll(" ", "-").toLowerCase()}#view`}
           className="absolute top-3 right-3 cursor-pointer flex items-center justify-center w-10 h-10 bg-gray-100 hover:bg-red-400 active:animate-ping text-gray-500 hover:text-white rounded-full "
         >
           <svg
@@ -70,8 +70,8 @@ const SingleProduct = ({ prod }: any) => {
         </div>
         <div className="mb-2 text-teal-500 pointer-events-none flex flex-row items-center ">
           <Rating rating={prod.rating} />
-          <span className="pt-1 pl-2 text-xs text-gray-500 underline">
-            {prod.price + 55} Reviews
+          <span className="pt-1 pl-2 text-xs text-gray-500">
+            {"(" + (prod.price - 19) + ")"} Reviews
           </span>
         </div>
         <h1 className={` Xtext-teal-600 whitespace-nowrap Xtext-teal-600`}>
@@ -83,7 +83,7 @@ const SingleProduct = ({ prod }: any) => {
             {cart.some((p) => p.name === prod.name) ? (
               <button
                 onClick={() => dispatch(removeFromCart(prod.name))}
-                className=" bg-gradient-to-bl from-pink-600 to-pink-500 Xbg-pink-500 Xuppercase rounded-sm px-7 py-1.5 cursor-pointer active:animate-ping"
+                className=" bg-gradient-to-br from-pink-500 to-red-500 Xbg-pink-500 Xuppercase rounded-sm px-7 py-1.5 cursor-pointer active:animate-ping"
               >
                 Quitar del carrito
               </button>

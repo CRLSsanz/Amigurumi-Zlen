@@ -69,7 +69,7 @@ export default function Home() {
     <main className="w-full bg-gray-100 flex min-h-screen flex-col items-center">
       {/** MAIN --- <img src="./image/fondo1.jpg" alt="" /> */}
       <div className="w-full flex flex-col items-center">
-        <div className="md:hidden w-full relative bg-red-300 mb-10 ">
+        <div className="md:hidden w-full relative bg-gray-200 mb-10 ">
           <Image
             src={require(`/public/image/fondo1.jpg`)}
             alt="Amigurumi"
@@ -122,7 +122,7 @@ export default function Home() {
       </div>
 
       {/** WHATSAPP */}
-      <div className="fixed bottom-3 right-3 bg-green-500 hover:bg-emerald-500 rounded-full p-1.5">
+      <div className="fixed bottom-3 right-3 bg-green-500 hover:bg-emerald-500 shadow-md shadow-black rounded-full p-1.5">
         <div className="relative ">
           <WhatsApp text={""} size={45} />
           <div className="absolute -top-2 -right-2 h-5 w-5 text-xs bg-red-500 text-white font-bold rounded-full flex justify-center items-center">
