@@ -132,7 +132,7 @@ const Filter = () => {
 
         <button
           onClick={() => dispatch(clearFilter())}
-          className="w-full text-center px-4 py-2 rounded-sm bg-teal-500 text-white mb-10"
+          className="w-full text-center font-bold border border-gray-500 text-gray-600 active:bg-teal-400 active:text-white active:border-transparent px-4 py-1.5 rounded-sm  mb-10"
         >
           Ver Todo
         </button>

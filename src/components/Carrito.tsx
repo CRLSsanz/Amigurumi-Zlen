@@ -93,7 +93,14 @@ const Carrito = () => {
                     </div>
 
                     <div className="text-sm w-full px-4">
-                      <h1 className="">{item.name}</h1>
+                      <Link
+                        href={`/product/${item.name
+                          .replaceAll(" ", "-")
+                          .toLowerCase()}`}
+                        className="underline"
+                      >
+                        {item.name}
+                      </Link>
                       <h1 className=" text-xs text-gray-500 mb-2">
                         Cantidad: {item.qty}
                       </h1>
@@ -128,24 +135,24 @@ const Carrito = () => {
             </div>
             {/** SUBTOTAL */}
             <div className="w-full p-5 border-t-2 bg-gray-200">
-              <div className="text-lg flex flex-row justify-between mb-1">
+              <div className="text-base flex flex-row justify-between mb-1">
                 <h1 className="font-bold">Total estimado:</h1>
-                <h1 className=" font-bold lining-nums">${subTotal}.00</h1>
+                <h1 className="font-bold lining-nums">${subTotal}.00</h1>
               </div>
               <p className="text-xs text-gray-500 mb-5">
                 Gastos de envío e impuestos calculados al finalizar la compra.
               </p>
-              <div className="text-sm text-center text-white flex flex-col">
+              <div className="text-xs text-center text-white flex flex-col">
                 <Link
                   href="/cart/#view"
-                  className="px-5 py-2.5 rounded-full bg-teal-500 mb-4"
+                  className="px-5 py-2.5 rounded-full bg-gradient-to-br from-teal-500 to-indigo-500 mb-4"
                   onClick={() => setShowCar(!showCar)}
                 >
                   Ver carrito
                 </Link>
 
-                <div className="flex flex-row justify-center items-center py-1.5 rounded-full bg-green-500 hover:bg-emerald-600 cursor-pointer">
-                  <WhatsApp text={"Pedir por Whatsapp "} size={28} />
+                <div className="flex flex-row justify-center items-center py-1 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 cursor-pointer">
+                  <WhatsApp text={"Pedir por Whatsapp  "} size={28} />
                 </div>
               </div>
             </div>

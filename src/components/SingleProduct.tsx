@@ -65,37 +65,42 @@ const SingleProduct = ({ prod }: any) => {
       </div>
 
       <div className="w-full p-5">
-        <h1 className="w-full font-bold mb-1"> {prod.name}</h1>
-        <div className="flex flex-col Xjustify-between mb-3">
-          {/** price.split(".")[0] */}
-          <h1 className={`text-sm text-gray-700 `}>$ {prod.price}.00</h1>
-          <h1 className="text-xs text-gray-500">Delivery en 5 dias</h1>
-          <div className="pointer-events-none flex flex-row items-center text-gray-400">
-            <Rating rating={prod.rating} />
-          </div>
+        <div className="flex flex-row justify-between">
+          <h1 className="w-full font-bold mb-1"> {prod.name}</h1>
         </div>
-
-        <div className="Xabsolute Xbottom-5 Xright-5">
-          {cart.some((p) => p.name === prod.name) ? (
-            <button
-              onClick={() => dispatch(removeFromCart(prod.name))}
-              className=" bg-red-500 text-white text-sm font-bold rounded-sm px-3 py-1.5 cursor-pointer active:animate-ping"
-            >
-              Quitar del carrito
-            </button>
-          ) : (
-            <button
-              disabled={!prod.inStock}
-              onClick={() => sendProduct()}
-              className={` text-white text-sm font-bold rounded-sm px-3 py-1.5 ${
-                prod.inStock
-                  ? "bg-blue-500 cursor-pointer active:animate-ping"
-                  : "bg-blue-400"
-              } `}
-            >
-              {!prod.inStock ? "Producto agotado" : "Agregar al carrito"}
-            </button>
-          )}
+        <div className="mb-2 text-teal-500 pointer-events-none flex flex-row items-center ">
+          <Rating rating={prod.rating} />
+          <span className="pt-1 pl-2 text-xs text-gray-500 underline">
+            {prod.price + 55} Reviews
+          </span>
+        </div>
+        <h1 className={` Xtext-teal-600 whitespace-nowrap Xtext-teal-600`}>
+          {/** price.split(".")[0] */}$ {prod.price}.00
+        </h1>
+        <h1 className="text-xs text-gray-500 mb-2 ">Delivery en 5 dias</h1>
+        <div className="flex flex-row items-center justify-between">
+          <div className="text-white text-sm font-bold ">
+            {cart.some((p) => p.name === prod.name) ? (
+              <button
+                onClick={() => dispatch(removeFromCart(prod.name))}
+                className=" bg-gradient-to-bl from-pink-600 to-pink-500 Xbg-pink-500 Xuppercase rounded-sm px-7 py-1.5 cursor-pointer active:animate-ping"
+              >
+                Quitar del carrito
+              </button>
+            ) : (
+              <button
+                disabled={!prod.inStock}
+                onClick={() => sendProduct()}
+                className={`  Xuppercase rounded-sm px-7 py-1.5 ${
+                  prod.inStock
+                    ? "bg-gradient-to-br from-teal-500 to-indigo-500 Xbg-teal-500 cursor-pointer active:animate-ping"
+                    : "bg-teal-500/70"
+                } `}
+              >
+                {!prod.inStock ? "Producto agotado" : "Agregar al carrito"}
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </div>

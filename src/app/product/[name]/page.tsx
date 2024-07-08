@@ -35,7 +35,7 @@ const Product = ({ params }: any) => {
 
   return (
     <div className="">
-      <div className="flex w-full bg-red-300">
+      <div className="flex w-full bg-gray-200">
         <Image
           //src={require("/public/image/boy2.jpg")}
           src={require(`/public/image/${item.image}`)}
@@ -51,12 +51,28 @@ const Product = ({ params }: any) => {
         />
       </div>
 
-      <div className="py-10 px-5">
+      <div className="py-5 px-10">
         <h1 className="uppercase font-bold">{item.name}</h1>
         <h2 className="text-xs text-gray-500 mb-5">
-          Codigo del producto: 0462-83
+          Codigo del producto:{" "}
+          {"" +
+            item.category.substr(0, 2).toUpperCase() +
+            item.name.substr(0, 3).toUpperCase() +
+            item.rating +
+            item.price +
+            "-26"}
         </h2>
-        <div className="text-sm text-gray-700 mb-5">
+        <div className="px-5 flex flex-row justify-between">
+          <h1 className={`text-lg font-bold `}>$ {item.price}.00</h1>
+          <div className="mb-2 text-teal-500 pointer-events-none flex flex-col items-center ">
+            <Rating rating={item.rating} />
+            <span className="pt-1 pl-2 text-xs text-gray-500 underline">
+              {item.price + 55} Reviews
+            </span>
+          </div>
+        </div>
+
+        <div className="border-t text-sm text-gray-700 py-5">
           <h1 className="mb-2">
             <strong>Materiales:</strong> 100% algodón <br /> con relleno
             siliconado
@@ -70,17 +86,10 @@ const Product = ({ params }: any) => {
           </h1>
         </div>
 
-        <h1 className={`text-lg text-blue-600 font-bold `}>
-          $ {item.price}.00
-        </h1>
-        <div className="pointer-events-none flex flex-row items-center text-gray-500 mb-5">
-          <Rating rating={item.rating} />
-        </div>
-
         <div className="flex flex-row items-center ">
           {/** CANTIDAD */}
-          <div className="flex flex-row items-center justify-between pr-10">
-            <div className="border-2 flex flex-row items-center justify-center text-center">
+          <div className="flex flex-row items-center justify-between pr-5">
+            <div className="border-[1px] border-gray-500 flex flex-row items-center justify-center text-center">
               <button
                 //onClick={() => dispatch(changeCartQty(qty - 1))}
                 onClick={() =>
@@ -122,11 +131,11 @@ const Product = ({ params }: any) => {
           </div>
 
           {/** ADD TO CART */}
-          <div className="Xabsolute Xbottom-5 Xright-5">
+          <div className="text-white text-sm font-bold ">
             {cart.some((p) => p.name === item.name) ? (
               <button
                 onClick={() => dispatch(removeFromCart(item.name))}
-                className="w-full  bg-red-500 text-white text-sm font-bold rounded-sm px-3 py-2 cursor-pointer active:animate-ping"
+                className="bg-gradient-to-bl from-pink-600 to-pink-500 Xbg-pink-500 Xuppercase rounded-sm px-5 py-2 cursor-pointer active:animate-ping"
               >
                 Quitar del carrito
               </button>
@@ -134,10 +143,10 @@ const Product = ({ params }: any) => {
               <button
                 disabled={!item.inStock}
                 onClick={() => dispatch(addToCart({ ...item, qty }))}
-                className={`w-full text-white text-sm font-bold rounded-sm px-3 py-2 ${
+                className={`Xuppercase rounded-sm px-5 py-2 ${
                   item.inStock
-                    ? "bg-blue-500 cursor-pointer active:animate-ping"
-                    : "bg-blue-400"
+                    ? "bg-gradient-to-br from-teal-500 to-indigo-500 Xbg-teal-500 cursor-pointer active:animate-ping"
+                    : "bg-teal-500/70"
                 } `}
               >
                 {!item.inStock ? "Producto agotado" : "Agregar al carrito"}
@@ -163,7 +172,7 @@ const Product = ({ params }: any) => {
           <br />
           Tamaño Amigurumi: 26 cm. <br />
           <br />
-          Instrucciones de cuidado: <br />
+          <strong>Instrucciones de cuidado:</strong> <br />
           <br />
           1️⃣ Usa agua tibia y un detergente suave. Evita productos agresivos que
           puedan dañar las fibras del amigurumi. <br />

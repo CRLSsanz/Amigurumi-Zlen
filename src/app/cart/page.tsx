@@ -233,11 +233,11 @@ const Cart = () => {
               </div>
 
               <div className="w-full text-white text-center font-bold flex flex-col">
-                <h1 className=" py-3 rounded-full bg-blue-500 hover:bg-blue-700 cursor-pointer mb-5">
+                <h1 className=" py-3 rounded-full bg-gradient-to-br from-teal-500 to-indigo-500 cursor-pointer mb-5">
                   Procede a Checkout
                 </h1>
 
-                <div className="flex flex-row justify-center items-center py-1.5 rounded-full bg-green-500 hover:bg-emerald-600 cursor-pointer mb-5">
+                <div className="flex flex-row justify-center items-center py-1.5 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 cursor-pointer mb-5">
                   <WhatsApp text={"Pedir por Whatsapp "} size={28} />
                 </div>
 

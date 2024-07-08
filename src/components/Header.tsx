@@ -45,7 +45,7 @@ const Header = () => {
         </div>
 
         {/** LINK */}
-        <ul className="lg:relative w-full py-10 px-5 lg:px-0 lg:flex lg:flex-row lg:items-center">
+        <ul className="lg:relative w-full text-sm py-10 px-5 lg:px-0 lg:flex lg:flex-row lg:items-center">
           <li className="p-3 border-b border-gray-300 lg:border-transparent flex flex-row justify-between">
             <Link
               href="/#view"
