@@ -5,8 +5,11 @@ import { removeFromCart } from "@/redux/features/cartSlice";
 import Link from "next/link";
 import Image from "next/image";
 import WhatsApp from "./WhatsApp";
+import { usePathname } from "next/navigation";
 
 const Carrito = () => {
+  const pathname = usePathname().substr(0, 3);
+
   const [showCar, setShowCar] = useState(true);
   const [subTotal, setSubTotal] = useState(0);
   const carrito = useAppSelector((state) => state.carrito);
@@ -78,7 +81,7 @@ const Carrito = () => {
                   >
                     <div className="relative min-w-20 h-20 ">
                       <Link
-                        href={`/product/${item.name
+                        href={`${pathname}/product/${item.name
                           .replaceAll(" ", "-")
                           .toLowerCase()}#view`}
                         onClick={() => setShowCar(!showCar)}
@@ -144,7 +147,7 @@ const Carrito = () => {
               </p>
               <div className="text-xs text-center text-white flex flex-col">
                 <Link
-                  href="/cart/#view"
+                  href={`${pathname}/cart/#view`}
                   className="px-5 py-2.5 rounded-full bg-gradient-to-br from-teal-500 to-indigo-500 mb-4"
                   onClick={() => setShowCar(!showCar)}
                 >

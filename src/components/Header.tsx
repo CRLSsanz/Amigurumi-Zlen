@@ -4,14 +4,25 @@ import { useAppDispatch } from "@/redux/hooks";
 import { filterByCategory, filterByStock } from "@/redux/features/filterSlice";
 import Link from "next/link";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
+import LocalSwitcher from "./LocalSwitcher";
 
-const Header = () => {
+export const Header = () => {
+  const t = useTranslations("Header");
+
   const [showList, setShowList] = useState(false);
   const dispatch = useAppDispatch();
 
+  function changeLang(value: string) {}
+  //t("home.body") t("header.message")
+
   return (
     <section className="w-full bg-gray-100 flex flex-col items-center">
-      <div className="w-full lg:max-w-[1024px] py-5 lg:flex lg:flex-row">
+      <div className="relative w-full lg:max-w-[1024px] py-5 lg:flex lg:flex-row">
+        <div className="absolute top-2 right-2">
+          <LocalSwitcher />
+        </div>
+
         {/** LOGO */}
         <div className="w-full flex flex-col lg:flex-row items-center gap-2">
           {/** <div className="Xbg-sky-300">
@@ -38,8 +49,8 @@ const Header = () => {
             <h1 className="text-xl font-bold tracking-widest text-gray-800">
               ZLEN
             </h1>
-            <h1 className=" text-gray-500 xuppercase tracking-widest text-xs">
-              Amigurumi hecho <br /> a mano
+            <h1 className=" w-36 text-gray-500 xuppercase tracking-widest text-xs">
+              {t("title")}
             </h1>
           </div>
         </div>
@@ -169,5 +180,3 @@ const Header = () => {
     </section>
   );
 };
-
-export default Header;

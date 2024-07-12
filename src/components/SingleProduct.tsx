@@ -6,10 +6,12 @@ import Rating from "./Rating";
 import { addToCart, removeFromCart } from "@/redux/features/cartSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import Image from "next/image";
+import { useLocale } from "next-intl";
 
 const SingleProduct = ({ prod }: any) => {
   const cart = useAppSelector((state) => state.carrito);
   const dispatch = useAppDispatch();
+  const localActive = useLocale();
 
   const sendProduct = () => {
     //let newProd = { ...prod, qty: "2" };
@@ -44,7 +46,9 @@ const SingleProduct = ({ prod }: any) => {
         />
 
         <Link
-          href={`/product/${prod.name.replaceAll(" ", "-").toLowerCase()}#view`}
+          href={`/${localActive}/product/${prod.name
+            .replaceAll(" ", "-")
+            .toLowerCase()}#view`}
           className="absolute top-3 right-3 cursor-pointer flex items-center justify-center w-10 h-10 bg-gray-100 hover:bg-red-400 active:animate-ping text-gray-500 hover:text-white rounded-full "
         >
           <svg

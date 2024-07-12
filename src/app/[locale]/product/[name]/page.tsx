@@ -63,9 +63,7 @@ const Product = ({ params }: any) => {
             "-26"}
         </h2>
         <div className="pr-5 flex flex-row justify-between">
-          <h1 className={`text-2xl font-extralight tracking-widest `}>
-            ${item.price}.00
-          </h1>
+          <h1 className={`text-2xl font-extralight `}>${item.price}.00</h1>
           <div className="mb-2 text-teal-500 pointer-events-none flex flex-col items-center ">
             <Rating rating={item.rating} />
             <span className="pt-1 text-xs text-gray-500">

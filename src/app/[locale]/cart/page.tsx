@@ -5,9 +5,12 @@ import { changeCartQty, removeFromCart } from "@/redux/features/cartSlice";
 import Link from "next/link";
 import Image from "next/image";
 import WhatsApp from "@/components/WhatsApp";
+import { usePathname } from "next/navigation";
 
 const Cart = () => {
   const [subTotal, setSubTotal] = useState(0);
+
+  const pathname = usePathname().substr(0, 3);
 
   const cart = useAppSelector((state) => state.carrito);
   const dispatch = useAppDispatch();
@@ -75,7 +78,7 @@ const Cart = () => {
                   <td className="py-5 pl-5 align-top">
                     <div className="relative w-28 h-28 lg:h-28 lg:w-36">
                       <Link
-                        href={`/product/${item.name
+                        href={`${pathname}/product/${item.name
                           .replaceAll(" ", "-")
                           .toLowerCase()}#view`}
                       >
