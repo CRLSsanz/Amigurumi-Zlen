@@ -6,12 +6,13 @@ import Rating from "./Rating";
 import { addToCart, removeFromCart } from "@/redux/features/cartSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import Image from "next/image";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 const SingleProduct = ({ prod }: any) => {
   const cart = useAppSelector((state) => state.carrito);
   const dispatch = useAppDispatch();
   const localActive = useLocale();
+  const t = useTranslations("Product");
 
   const sendProduct = () => {
     //let newProd = { ...prod, qty: "2" };
@@ -75,13 +76,13 @@ const SingleProduct = ({ prod }: any) => {
         <div className="mb-2 text-teal-500 pointer-events-none flex flex-row items-center ">
           <Rating rating={prod.rating} />
           <span className="pt-1 pl-2 text-xs text-gray-500">
-            {"(" + (prod.price - 19) + ")"} Reviews
+            {"(" + (prod.price - 19) + " Reviews)"}
           </span>
         </div>
         <h1 className={` Xtext-teal-600 whitespace-nowrap Xtext-teal-600`}>
           {/** price.split(".")[0] */}$ {prod.price}.00
         </h1>
-        <h1 className="text-xs text-gray-500 mb-2 ">Delivery en 5 dias</h1>
+        <h1 className="text-xs text-gray-500 mb-2 ">Delivery 8 days</h1>
         <div className="flex flex-row items-center justify-between">
           <div className="text-white text-sm font-bold ">
             {cart.some((p) => p.name === prod.name) ? (
@@ -89,7 +90,7 @@ const SingleProduct = ({ prod }: any) => {
                 onClick={() => dispatch(removeFromCart(prod.name))}
                 className=" bg-gradient-to-br from-pink-500 to-red-500 Xbg-pink-500 Xuppercase rounded-sm px-7 py-1.5 cursor-pointer active:animate-ping"
               >
-                Quitar del carrito
+                {t("delete")}
               </button>
             ) : (
               <button
@@ -101,7 +102,7 @@ const SingleProduct = ({ prod }: any) => {
                     : "bg-teal-500/70"
                 } `}
               >
-                {!prod.inStock ? "Producto agotado" : "Agregar al carrito"}
+                {!prod.inStock ? `${t("soldOut")}` : `${t("add")}`}
               </button>
             )}
           </div>

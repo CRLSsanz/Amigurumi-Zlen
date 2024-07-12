@@ -19,7 +19,7 @@ export const Header = () => {
   return (
     <section className="w-full bg-gray-100 flex flex-col items-center">
       <div className="relative w-full lg:max-w-[1024px] py-5 lg:flex lg:flex-row">
-        <div className="absolute top-2 right-2">
+        <div className="absolute z-10 top-2 right-2">
           <LocalSwitcher />
         </div>
 
@@ -104,7 +104,7 @@ export const Header = () => {
                 }
                 className="p-1 active:animate-ping"
               >
-                · Diseños de Animales
+                · {t("animals")}
               </Link>
             </li>
             <li className="flex p-3 pl-5 border-b border-gray-300 ">
@@ -116,7 +116,7 @@ export const Header = () => {
                 }
                 className="p-1 active:animate-ping"
               >
-                · Personajes y/o Divertidos
+                · {t("characters")}
               </Link>{" "}
             </li>
             <li className="flex p-3 pl-5 border-b border-gray-300 ">
@@ -128,7 +128,7 @@ export const Header = () => {
                 }
                 className="p-1 active:animate-ping"
               >
-                · Colecciones Amigurumis
+                · {t("collections")}
               </Link>
             </li>
             <li className="flex p-3 pl-5 border-b border-gray-300 ">
@@ -140,7 +140,7 @@ export const Header = () => {
                 }
                 className="p-1 active:animate-ping"
               >
-                · Personajes Animados
+                · {t("animated")}
               </Link>{" "}
             </li>
           </div>
@@ -154,7 +154,7 @@ export const Header = () => {
               }
               className=" p-1 active:animate-ping cursor-pointer"
             >
-              Nuevos diseños
+              {t("newDesigns")}
             </Link>
           </li>
 
@@ -163,7 +163,7 @@ export const Header = () => {
               href="/#About"
               className=" p-1 active:animate-ping cursor-pointer"
             >
-              Acerca de
+              {t("about")}
             </Link>
           </li>
 
@@ -172,7 +172,7 @@ export const Header = () => {
               href="/#Contac"
               className=" p-1 active:animate-ping cursor-pointer"
             >
-              Contacto
+              {t("contact")}
             </Link>
           </li>
         </ul>

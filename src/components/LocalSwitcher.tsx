@@ -20,13 +20,12 @@ const LocalSwitcher = () => {
       <p className="hidden Xsr-only">Change Language</p>
       <select
         defaultValue={localeActive}
-        className="text-sm w-24 bg-transparent p-2"
+        className="text-sm w-24 bg-transparent p-2 cursor-pointer"
         onChange={changeLanguage}
         disabled={isPending}
       >
-        <option value="en">English</option>
-        <option value="it">Italian</option>
         <option value="es">Spanish</option>
+        <option value="it">Italian</option>
       </select>
     </div>
   );

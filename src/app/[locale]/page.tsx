@@ -5,8 +5,10 @@ import Carrito from "@/components/Carrito";
 import WhatsApp from "@/components/WhatsApp";
 import SingleProduct from "@/components/SingleProduct";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 export default function Home() {
+  const t = useTranslations("Main");
   const data = useAppSelector((state) => state.products);
 
   const { byCategory, byStock, searchQuery, sort, byRating, byA_Z } =
@@ -87,20 +89,13 @@ export default function Home() {
         </div>
 
         <p className="lg:max-w-[500px] px-5 text-xs text-center mb-5 leading-5">
-          ¡Bienvenidos a nuestra tienda online de amigurumis únicos! Descubre
-          una colección encantadora de adorables muñecos tejidos a mano con
-          materiales de alta calidad. Sumérgete en un mundo lleno de color,
-          ternura y creatividad, donde cada amigurumi es una pequeña obra de
-          arte.
+          {t("text1")}
         </p>
         <p className="lg:max-w-[500px] px-5 text-xs text-center mb-10 leading-5">
-          Te invitamos a explorar nuestro catálogo y encontrar el compañero
-          perfecto que alegrará tu vida o será el regalo ideal para alguien
-          especial. ¡Prepárate para abrazar la dulzura de los amigurumis y
-          desatar tu imaginación en nuestra tienda en línea!
+          {t("text2")}
         </p>
         <h1 className="text-center text-sm bg-gradient-to-bl from-purple-600 to-pink-500 px-7 py-2 rounded-tl-md rounded-br-md rounded-3xl  text-white mb-20 cursor-pointer">
-          Saber mas de ZLEN
+          {t("button")}
         </h1>
       </div>
 

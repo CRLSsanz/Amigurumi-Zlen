@@ -10,8 +10,10 @@ import {
 } from "@/redux/features/filterSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import Rating from "./Rating";
+import { useTranslations } from "next-intl";
 
 const Filter = () => {
+  const t = useTranslations("Filter");
   const { byStock, searchQuery, sort, byA_Z, byRating } = useAppSelector(
     (state) => state.filter
   );
@@ -29,7 +31,7 @@ const Filter = () => {
             onChange={(e) => dispatch(filterBySearch(e.target.value))}
             type="text"
             className="w-full py-2 px-4 border-2 text-sm bg-white"
-            placeholder="Buscar Amigurumi"
+            placeholder={`${t("search")}`}
           />
           <span className="absolute top-2 right-2 text-gray-300">
             <svg
@@ -62,7 +64,7 @@ const Filter = () => {
             htmlFor="default-checkbox"
             className="ms-2 text-sm font-medium text-gray-600 cursor-pointer"
           >
-            Orden alfabetico A-Z
+            {t("alphabetical")}
           </label>
         </div>
 
@@ -80,7 +82,7 @@ const Filter = () => {
             htmlFor="default-radio-1"
             className="ms-2 text-sm font-medium text-gray-600 cursor-pointer"
           >
-            De menor precio
+            {t("priceLower")}
           </label>
         </div>
 
@@ -99,7 +101,7 @@ const Filter = () => {
             htmlFor="default-radio-2"
             className="ms-2 text-sm font-medium text-gray-600 cursor-pointer"
           >
-            De mayor precio
+            {t("priceHigher")}
           </label>
         </div>
 
@@ -116,12 +118,12 @@ const Filter = () => {
             htmlFor="default-checkbox2"
             className="ms-2 text-sm font-medium text-gray-600 cursor-pointer"
           >
-            Ocultar fuera de Stock
+            {t("stockOut")}
           </label>
         </div>
 
         <div className="flex flex-row items-center text-gray-500 mb-6">
-          <label className="text-sm text-gray-600 mr-3">Rating: </label>
+          <label className="text-sm text-gray-600 mr-3">{t("rating")} </label>
           <Rating
             rating={byRating}
             style={{ cursor: "pointer" }}
@@ -134,7 +136,7 @@ const Filter = () => {
           onClick={() => dispatch(clearFilter())}
           className="w-full text-center text-sm font-bold border border-gray-500 text-gray-600 active:bg-teal-400 active:text-white active:border-transparent px-4 py-2 rounded-sm  mb-10"
         >
-          Ver Todo
+          {t("see")}
         </button>
       </div>
     </>

@@ -1,5 +1,53 @@
 {
   "Header": {
-    "title": "Amigurumi fatti a mano"
+    "title": "Amigurumi fatti a mano",
+    "newDesigns": "Nuovi Disegni",
+    "about": "Chi Siamo",
+    "contact": "Contatti",
+    "animals": "Animali",
+    "characters": "Personaggi divertenti",
+    "collections": "Collezioni",
+    "animated": "Animato"
+  },
+
+  "Main": {
+    "text1": "Benvenuto nel nostro negozio online di amigurumi unici! Scopri un'affascinante collezione di adorabili bambole lavorate a mano con materiali di alta qualità. Immergiti in un mondo pieno di colore, tenerezza e creatività, dove ogni amigurumi è una piccola opera d'arte.",
+    "text2": "Ti invitiamo a esplorare il nostro catalogo e a trovare il compagno perfetto che illuminerà la tua vita o sarà il regalo ideale per una persona speciale. Preparati ad abbracciare la dolcezza degli amigurumi e libera la tua fantasia nel nostro negozio online!",
+    "button": "Scopri di più su ZLEN"
+  },
+
+  "Filter": {
+    "search": "Cerca amigurumi",
+    "alphabetical": "Ordine alfabetico A-Z",
+    "priceLower": "Prezzo più basso",
+    "priceHigher": "Prezzo più alto",
+    "stockOut": "Nascondi Esaurito",
+    "rating": "Valutazione:",
+    "see": "Vedere tutto"
+  },
+  "Cart": {
+    "title": "Carrello",
+    "quantity": "Quantità",
+    "subTotal": "SubTotale",
+    "text1": "Spese di spedizione e tasse calcolate al sheckout",
+    "checkout": "Visualizza il carrello",
+    "byWhatsapp": "Ordina da WhatsApp  ",
+    "cartEmpty": "Il tuo carrello è vuoto",
+    "continueShopping": "Continua Gli Acquisti",
+    "product": "Prodotto",
+    "total": "Totale",
+    "shipment": "Spedizione",
+    "fixedPrice": "Prezzo fisso",
+    "sendTo": "Inviare in Atlantico",
+    "changeAddress": "Cambiare direzione",
+    "check1": "Ho letto a accetto le",
+    "check11": "Condizioni di vendita",
+    "check22": "Privacy policy",
+    "proceed": " Procedi al Checkout"
+  },
+  "Product": {
+    "add": "Aggiungi al Carrello",
+    "delete": "Rimuovi dal Carrello",
+    "soldOut": "Prodotto Esaurito"
   }
 }

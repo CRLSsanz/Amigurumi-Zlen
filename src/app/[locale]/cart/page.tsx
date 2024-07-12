@@ -6,9 +6,11 @@ import Link from "next/link";
 import Image from "next/image";
 import WhatsApp from "@/components/WhatsApp";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 const Cart = () => {
   const [subTotal, setSubTotal] = useState(0);
+  const t = useTranslations("Cart");
 
   const pathname = usePathname().substr(0, 3);
 
@@ -22,16 +24,16 @@ const Cart = () => {
   if (cart.length === 0)
     return (
       <div className="w-full mb-40">
-        <h1 className="font-bold p-5">Tu Carrito</h1>
+        <h1 className="font-bold p-5">{t("title")}</h1>
         <div className="uppercase text-[10px] tracking-widest w-full border-b text-gray-400 py-4 pl-5 mb-5">
-          tu carrito esta vacio
+          {t("cartEmpty")}
         </div>
         <Link
           href="/#view"
           className="flex p-2 mx-5 bg-gradient-to-br from-teal-500 to-indigo-500  rounded-full"
         >
           <h1 className="w-full text-sm text-center text-white">
-            Volver a la tienda
+            {t("continueShopping")}
           </h1>
         </Link>
       </div>
@@ -55,18 +57,20 @@ const Cart = () => {
           id="view"
           className="flex flex-row items-center justify-between p-5"
         >
-          <h1>Tu Carrito</h1>
+          <h1>{t("title")}</h1>
         </div>
         <div className="w-full lg:max-w-[1024px] lg:flex lg:flex-row">
           {/** TABLA */}
-          <table className="Xhidden lg:basis-2/3 lg:block table-fixed border-collapse">
+          <table className="lg:basis-2/3 lg:block table-fixed border-collapse">
             <thead>
-              <tr className="text-[10px] uppercase tracking-widest border-b text-gray-400 ">
-                <th className="py-4 pl-5 text-start">Producto </th>
+              <tr className="text-[9px] uppercase tracking-widest border-b text-gray-400 ">
+                <th className="py-4 pl-5 text-start">{t("product")}</th>
                 <th className="py-4 pr-5 text-end text-transparent lg:text-gray-400">
-                  Cantidad
+                  {t("quantity")}
                 </th>
-                <th className="py-4 pr-5 text-end">subTotal</th>
+                <th className="py-4 pr-5 text-end Xbg-red-200">
+                  {t("subTotal")}
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -122,9 +126,7 @@ const Cart = () => {
                             -
                           </button>
 
-                          <h1 className="w-10 h-7 py-1.5 text-xs">
-                            {item.qty}
-                          </h1>
+                          <h1 className="w-9 h-7 py-1.5 text-xs">{item.qty}</h1>
 
                           <button
                             onClick={() =>
@@ -185,20 +187,20 @@ const Cart = () => {
               </h1>
 
               <div className="w-full flex flex-row justify-between py-5 border-b border-gray-300">
-                <h1 className=" font-bold">Envio:</h1>
+                <h1 className=" font-bold">{t("shipment")}:</h1>
                 <div className="flex flex-col text-end">
-                  <h1 className="">Precio fijo: $8.00</h1>
-                  <h1 className="mb-2">Enviar a Atlantico</h1>
-                  <h1 className="">Cambiar direccion</h1>
+                  <h1 className="">{t("fixedPrice")}: $8.00</h1>
+                  <h1 className="mb-2">{t("sendTo")}</h1>
+                  <h1 className="">{t("changeAddress")}</h1>
                 </div>
               </div>
 
               <div className="w-full text-base font-bold flex flex-row justify-between py-3">
-                <h1 className="font-bold">Total:</h1>
+                <h1 className="font-bold">{t("total")}:</h1>
                 <h1 className="tracking-wider">${subTotal + 8}.00</h1>
               </div>
 
-              <div className="flex mb-3">
+              <div className="w-full flex mb-3 px-4">
                 <input
                   id="default-checkbox"
                   type="checkbox"
@@ -209,11 +211,11 @@ const Cart = () => {
                   htmlFor="default-checkbox"
                   className="ms-2 text-xs cursor-pointer"
                 >
-                  He leido y acepto las{" "}
-                  <strong className="underline">Condiciones de venta</strong>
+                  {t("check1")}{" "}
+                  <strong className="underline">{t("check11")}</strong>
                 </label>
               </div>
-              <div className="flex mb-5">
+              <div className="w-full flex mb-5 px-4">
                 <input
                   id="default-checkbox2"
                   type="checkbox"
@@ -224,28 +226,19 @@ const Cart = () => {
                   htmlFor="default-checkbox2"
                   className="ms-2 text-xs cursor-pointer"
                 >
-                  He leido y acepto las{" "}
-                  <strong className="underline">Politica de Privacidad</strong>
+                  {t("check1")}{" "}
+                  <strong className="underline">{t("check22")}</strong>
                 </label>
               </div>
 
               <div className="w-full text-white text-center font-bold flex flex-col">
                 <h1 className=" py-3 rounded-full bg-gradient-to-br from-teal-500 to-indigo-500 cursor-pointer mb-5">
-                  Procede a Checkout
+                  {t("proceed")}
                 </h1>
 
                 <div className="flex flex-row justify-center items-center py-1.5 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 cursor-pointer mb-5">
-                  <WhatsApp text={"Pedir por Whatsapp "} size={28} />
+                  <WhatsApp text={t("byWhatsapp")} size={28} />
                 </div>
-
-                <Link
-                  href="/#view"
-                  className=" hidden w-full p-2 px-5 bg-gray-400  rounded-full"
-                >
-                  <h1 className=" text-sm text-center text-white whitespace-nowrap">
-                    Volver a la tienda
-                  </h1>
-                </Link>
               </div>
             </div>
           </div>
@@ -254,7 +247,7 @@ const Cart = () => {
 
       <Link href="/#view" className="w-full flex px-5 mb-10">
         <h1 className="w-full text-center text-sm py-2 mb-5 border border-gray-500 active:bg-teal-400 active:text-white active:border-transparent rounded-sm">
-          Volver a la tienda
+          {t("continueShopping")}
         </h1>
       </Link>
     </section>

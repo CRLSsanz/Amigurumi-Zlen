@@ -1,12 +1,53 @@
 {
   "Header": {
-    "title": "Amigurumi hecho a mano"
+    "title": "Amigurumi hecho a mano",
+    "newDesigns": "Nuevos Diseños",
+    "about": "Acerca de",
+    "contact": "Contacto",
+    "animals": "Animales",
+    "characters": "Personajes Divertidos",
+    "collections": "Colecciones",
+    "animated": "Animaciones"
   },
 
-  "Index": {
-    "title": "Bienvenido"
+  "Main": {
+    "text1": "¡Bienvenidos a nuestra tienda online de amigurumis únicos! Descubre una colección encantadora de adorables muñecos tejidos a mano con materiales de alta calidad. Sumérgete en un mundo lleno de color, ternura y creatividad, donde cada amigurumi es una pequeña obra de arte.",
+    "text2": "Te invitamos a explorar nuestro catálogo y encontrar el compañero perfecto que alegrará tu vida o será el regalo ideal para alguien especial. ¡Prepárate para abrazar la dulzura de los amigurumis y desatar tu imaginación en nuestra tienda en línea!",
+    "button": "Saber mas de ZLEN"
   },
-  "Home": {
-    "body": "Una tienda pensada de Amigurumis"
+  "Filter": {
+    "search": "Buscar amigurumi",
+    "alphabetical": "Orden alfabetico A-Z",
+    "priceLower": "De menor Precio",
+    "priceHigher": "De mayor precio",
+    "stockOut": "Ocultar fuera de Stock",
+    "rating": "Rating:",
+    "see": "Ver todo"
+  },
+  "Cart": {
+    "title": "Shopping Bag",
+    "quantity": "Cantidad",
+    "subTotal": "SubTotal",
+    "text1": "Gastos de envío e impuestos calculados al finalizar la compra.",
+    "checkout": "Ver Carrito",
+    "byWhatsapp": "Pedir desde WhatsApp  ",
+    "cartEmpty": "Tu carrito esta vacio",
+    "continueShopping": "Seguir Comprando",
+    "product": "Producto",
+    "total": "Total",
+    "shipment": "Envio",
+    "fixedPrice": "Precio fijo",
+    "sendTo": "Enviar a Atlantico",
+    "changeAddress": "Cambiar direccion",
+    "check1": "He leido y acepto las ",
+    "check11": "Condicciones de venta",
+    "check22": "Politica de privacidad",
+    "proceed": " Procede a Checkout"
+  },
+
+  "Product": {
+    "add": "Agregar al Carrito",
+    "delete": "Remover del Carrito",
+    "soldOut": "Producto Agotado"
   }
 }

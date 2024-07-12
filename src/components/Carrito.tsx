@@ -6,9 +6,11 @@ import Link from "next/link";
 import Image from "next/image";
 import WhatsApp from "./WhatsApp";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 const Carrito = () => {
   const pathname = usePathname().substr(0, 3);
+  const t = useTranslations("Cart");
 
   const [showCar, setShowCar] = useState(true);
   const [subTotal, setSubTotal] = useState(0);
@@ -38,12 +40,12 @@ const Carrito = () => {
       >
         {carrito.length === 0 ? (
           <div className="h-full flex flex-col items-center justify-center">
-            <h1 className="text-sm mb-5">Tu carrito esta vacio</h1>
+            <h1 className="text-sm mb-5">{t("cartEmpty")}</h1>
             <button
               onClick={() => setShowCar(!showCar)}
               className="bg-gradient-to-br from-teal-500 to-indigo-500 px-12 py-2 rounded-full text-sm text-white"
             >
-              Seguir comprando
+              {t("continueShopping")}
             </button>
           </div>
         ) : (
@@ -51,7 +53,7 @@ const Carrito = () => {
             <div className="h-full flex flex-col ">
               {/** TITLE */}
               <div className=" p-5 flex flex-row justify-between border-b-2 mb-5">
-                <h1 className="uppercase">Tu carrito</h1>
+                <h1 className="uppercase">{t("title")}</h1>
                 <span
                   onClick={() => setShowCar(!showCar)}
                   className="cursor-pointer"
@@ -105,7 +107,7 @@ const Carrito = () => {
                     <div className="text-sm w-full px-4">
                       <h1 className="leading-4 mb-1">{item.name}</h1>
                       <h1 className="text-xs text-gray-500 mb-1">
-                        Cantidad: {item.qty}
+                        {t("quantity")}: {item.qty}
                       </h1>
                       <h1 className="tracking-wider">
                         ${item.price * item.qty}
@@ -139,23 +141,21 @@ const Carrito = () => {
             {/** SUBTOTAL */}
             <div className="w-full p-5 border-t-2 bg-gray-200">
               <div className="text-base flex flex-row justify-between mb-1">
-                <h1 className="font-bold">Total estimado:</h1>
+                <h1 className="font-bold">{t("subTotal")}:</h1>
                 <h1 className="font-bold lining-nums">${subTotal}.00</h1>
               </div>
-              <p className="text-xs text-gray-500 mb-5">
-                Gastos de envío e impuestos calculados al finalizar la compra.
-              </p>
+              <p className="text-xs text-gray-500 mb-5">{t("text1")}</p>
               <div className="text-xs text-center text-white flex flex-col">
                 <Link
                   href={`${pathname}/cart/#view`}
                   className="px-5 py-2.5 rounded-full bg-gradient-to-br from-teal-500 to-indigo-500 mb-4"
                   onClick={() => setShowCar(!showCar)}
                 >
-                  Ver carrito
+                  {t("checkout")}
                 </Link>
 
                 <div className="flex flex-row justify-center items-center py-1 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 cursor-pointer">
-                  <WhatsApp text={"Pedir por WhatsApp  "} size={28} />
+                  <WhatsApp text={`${t("byWhatsapp")}  `} size={28} />
                 </div>
               </div>
             </div>
