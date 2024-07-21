@@ -220,7 +220,7 @@ const initialState = [
     category: "Divertidos",
   },
   {
-    name: "Girl Con Moños Amigurumi",
+    name: "Girl Con Colas Amigurumi",
     image: "girl2.jpg",
     price: 55,
     bgAvatar: "bg-[url('/image/girl2.jpg')]",

@@ -14,13 +14,13 @@ const Footer = () => {
 
         <div className="lg:grid lg:grid-cols-4 lg:gap-5">
           <div className="text-center mb-5">
-            <h1 className="font-semibold py-2">Contacto</h1>
-            <h1>+39 991 044 1430</h1>
-            <h1>hola@amigurumiamano.com</h1>
+            <h1 className="font-bold py-3">Contacto</h1>
+            <h1>+39 380 183 6002</h1>
+            <h1>hola@amigurumiszlen.com</h1>
             <h1>Milan - Italia</h1>
           </div>
-          <div className="text-center mb-5">
-            <h1 className="font-semibold py-2">Terminos y condiciones</h1>
+          <div className="text-center mb-7">
+            <h1 className="font-bold py-3">Terminos y condiciones</h1>
             <h1>Politicas de privacidad</h1>
             <h1>Politica de envio</h1>
             <h1>Preguntas frecuentes</h1>

@@ -4,10 +4,11 @@ import { useAppDispatch } from "@/redux/hooks";
 import { filterByCategory, filterByStock } from "@/redux/features/filterSlice";
 import Link from "next/link";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import LocalSwitcher from "./LocalSwitcher";
 
 export const Header = () => {
+  const localeActive = useLocale();
   const t = useTranslations("Header");
 
   const [showList, setShowList] = useState(false);
@@ -59,7 +60,7 @@ export const Header = () => {
         <ul className="lg:relative w-full text-sm py-10 px-5 lg:px-0 lg:flex lg:flex-row lg:items-center">
           <li className="p-3 border-b border-gray-300 lg:border-transparent flex flex-row justify-between">
             <Link
-              href="/#view"
+              href={`/${localeActive}#view`}
               onClick={() =>
                 dispatch(filterByCategory("")) && setShowList(false)
               }
@@ -97,7 +98,7 @@ export const Header = () => {
           >
             <li className="flex p-3 pl-5 border-b border-gray-300 ">
               <Link
-                href="/#view"
+                href={`/${localeActive}#view`}
                 onClick={() =>
                   dispatch(filterByCategory("Animales")) &&
                   setShowList(!showList)
@@ -109,7 +110,7 @@ export const Header = () => {
             </li>
             <li className="flex p-3 pl-5 border-b border-gray-300 ">
               <Link
-                href="/#view"
+                href={`/${localeActive}#view`}
                 onClick={() =>
                   dispatch(filterByCategory("Divertidos")) &&
                   setShowList(!showList)
@@ -121,7 +122,7 @@ export const Header = () => {
             </li>
             <li className="flex p-3 pl-5 border-b border-gray-300 ">
               <Link
-                href="/#view"
+                href={`/${localeActive}#view`}
                 onClick={() =>
                   dispatch(filterByCategory("Colecciones")) &&
                   setShowList(!showList)
@@ -133,7 +134,7 @@ export const Header = () => {
             </li>
             <li className="flex p-3 pl-5 border-b border-gray-300 ">
               <Link
-                href="/#view"
+                href={`/${localeActive}#view`}
                 onClick={() =>
                   dispatch(filterByCategory("Animaciones")) &&
                   setShowList(!showList)
@@ -147,7 +148,7 @@ export const Header = () => {
 
           <li className="flex p-3 border-b border-gray-300 lg:border-transparent whitespace-nowrap">
             <Link
-              href="/#view"
+              href={`/${localeActive}#view`}
               onClick={() =>
                 dispatch(filterByCategory("Nuevos Diseños")) &&
                 setShowList(false)
@@ -160,7 +161,7 @@ export const Header = () => {
 
           <li className="flex p-3 border-b border-gray-300 lg:border-transparent whitespace-nowrap">
             <Link
-              href="/#About"
+              href={`/${localeActive}#About`}
               className=" p-1 active:animate-ping cursor-pointer"
             >
               {t("about")}
@@ -169,7 +170,7 @@ export const Header = () => {
 
           <li className="flex p-3 border-b border-gray-300 lg:border-transparent lg:pr-0">
             <Link
-              href="/#Contac"
+              href={`/${localeActive}#Contac`}
               className=" p-1 active:animate-ping cursor-pointer"
             >
               {t("contact")}
