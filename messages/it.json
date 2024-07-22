@@ -13,7 +13,9 @@
   "Main": {
     "text1": "Benvenuto nel nostro negozio online di amigurumi unici! Scopri un'affascinante collezione di adorabili bambole lavorate a mano con materiali di alta qualità. Immergiti in un mondo pieno di colore, tenerezza e creatività, dove ogni amigurumi è una piccola opera d'arte.",
     "text2": "Ti invitiamo a esplorare il nostro catalogo e a trovare il compagno perfetto che illuminerà la tua vita o sarà il regalo ideale per una persona speciale. Preparati ad abbracciare la dolcezza degli amigurumi e libera la tua fantasia nel nostro negozio online!",
-    "button": "Scopri di più su ZLEN"
+    "button": "Scopri di più su ZLEN",
+    "show1": "Visualizzazione di",
+    "show2": "Risultati"
   },
 
   "Filter": {
@@ -38,16 +40,68 @@
     "total": "Totale",
     "shipment": "Spedizione",
     "fixedPrice": "Prezzo fisso",
-    "sendTo": "Inviare in Atlantico",
+    "sendTo": "Inviare in Italia",
     "changeAddress": "Cambiare direzione",
     "check1": "Ho letto a accetto le",
     "check11": "Condizioni di vendita",
     "check22": "Privacy policy",
     "proceed": " Procedi al Checkout"
   },
+
   "Product": {
-    "add": "Aggiungi al Carrello",
-    "delete": "Rimuovi dal Carrello",
-    "soldOut": "Prodotto Esaurito"
+    "send": "Spedizione in 8 giorni",
+    "add": "Aggiungi al carrello",
+    "delete": "Rimuovi dal carrello",
+    "soldOut": "Prodotto esaurito",
+    "code": "Codice prodotto",
+    "materials": "Materiali",
+    "materialText1": "100% cotone",
+    "materialText2": "con imbottitura in silicone",
+    "size": "Dimensione Amigurumi",
+    "delivery": "Tutti i nostri Amigurumi verranno inviati dai 10 ai 15 giorni dopo il pagamento"
+  },
+
+  "Detail": {
+    "description": "Descrizione",
+    "p1": "Scopri la nostra collezione di affascinanti amigurumi realizzati a mano con materiali di alta qualità.",
+    "p2": "Ogni pezzo è unico e si caratterizza per il design accurato e l'attenzione ai dettagli.",
+    "p3": "Si prega di notare che, a causa della lavorazione artigianale, potrebbero esserci leggere variazioni nelle dimensioni e nei colori, il che aggiunge ancora più esclusività a ciascun amigurumi.",
+    "p4": "Fai vivere la magia degli amigurumi nelle tue mani! Materiale: 100% cotone di alta qualità.",
+
+    "instruction": "Istruzioni per la cura:",
+    "ic1": "Utilizza acqua tiepida e un detersivo delicato. Evita prodotti aggressivi che potrebbero danneggiare le fibre dell'amigurumi.",
+    "ic2": "Lavali delicatamente a mano. Strofina delicatamente per rimuovere lo sporco senza deformare i dettagli.",
+    "ic3": "Sciacquare bene per rimuovere tutto il detersivo. Assicurati di non lasciare residui che potrebbero alterare la consistenza.",
+    "ic4": "Spremili delicatamente per eliminare l'acqua in eccesso, senza torcerli. Un trucco è avvolgerli in un asciugamano assorbente e premere delicatamente.",
+    "ic5": "Lasciali asciugare all'aria aperta, evitando l'esposizione diretta al sole. Puoi posizionarli su un asciugamano o su una griglia per mantenere la loro forma.",
+    "ip1": "E questo è tutto! Il tuo amigurumi sarà fresco e pronto per altre avventure.",
+    "ip2": "Ricorda che una cura adeguata prolungherà la sua vita e manterrà il suo fascino.",
+    "ip3": "Un modello e un design di ZLEN",
+    "ip4": "Tutti i nostri Amigurumi verranno spediti dai 10 ai 15 giorni dopo il pagamento"
+  },
+
+  "About": {
+    "title1": "Chi siamo",
+    "text1": "ZLEN è un'azienda virtuale che si dedica alla produzione e alla commercializzazione di bambole fatte a mano all'uncinetto e cerca di rafforzarsi nel settore artigianale generando valore aggiunto attraverso la qualità dei suoi prodotti.",
+    "title2": "La nostra storia",
+    "text2": "ZLEN è nata nel 2023 ed è stata fondata da Zoe Valentina, con l'obiettivo principale di essere un'opzione importante nei prodotti giocattolo per bambini e nella decorazione di spazi per bambini e adulti, attraverso prodotti di qualità garantita e ampia. varietà di referenze, cercando di risvegliare la sensibilità, l'amore e la soddisfazione dei nostri clienti.",
+    "text3": "Gli Amigurumi ZLEN sono bambole fatte a mano con materiali ecocompatibili di alta qualità al 100%, progettate utilizzando la metodologia dell'uncinetto. Zlen crea bambole lavorate a maglia con amore, per bambini, ragazzi e adulti, un prodotto fatto a mano con la convinzione di attirare il cliente attenzione, un prodotto di alta qualità per il mercato, esaltando l'amore e la dedizione che ognuno mette nella parte produttiva, un prodotto 100% artigianale e per il gusto di tutto il pubblico."
+  },
+
+  "Contact": {
+    "title": "Contatto",
+    "text": "Se hai domande o suggerimenti su ZLEN o su uno qualsiasi dei prodotti, o se hai qualche problema con il tuo ordine o il sito web, scrivi a hola@amigurumiszlen.co o WhatsApp 393801836002, sarò felice di aiutarti Voi. "
+  },
+
+  "Footer": {
+    "made": "fatto a mano",
+    "contact": "Contatto",
+    "termsConditions": "Termini e condizioni",
+    "privacyPolicies": "Informativa sulla privacy",
+    "shippingPolicy": "Politica di spedizione",
+    "questions": "Domande frequenti",
+    "subscrive": "Iscriviti e ricevi notizie su ZLEN amigurumis!",
+    "send": "Iscriviti",
+    "crochet": "Uncinetto | Fatto a mano | Per grandi e piccoli"
   }
 }

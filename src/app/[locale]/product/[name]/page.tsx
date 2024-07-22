@@ -9,6 +9,8 @@ import {
 } from "@/redux/features/cartSlice";
 import Rating from "@/components/Rating";
 import Carrito from "@/components/Carrito";
+import { useTranslations } from "next-intl";
+import Detail from "@/components/Detail";
 //import foto from "/public/image/boy1.jpg";
 
 //const cargarImagen = require.context("./tu_patch_assets", true);
@@ -18,6 +20,7 @@ const Product = ({ params }: any) => {
   const data = useAppSelector((state) => state.products);
   const cart = useAppSelector((state) => state.carrito);
   const [qty, setQty] = useState(1);
+  const t = useTranslations("Product");
 
   const dispatch = useAppDispatch();
 
@@ -54,8 +57,8 @@ const Product = ({ params }: any) => {
       <div className="py-5 px-10">
         <h1 className="uppercase font-bold">{item.name}</h1>
         <h2 className="text-xs text-gray-500 mb-5">
-          Codigo del producto:{" "}
-          {"" +
+          {t("code")}
+          {" " +
             item.category.substr(0, 2).toUpperCase() +
             item.name.substr(0, 3).toUpperCase() +
             item.rating +
@@ -63,7 +66,7 @@ const Product = ({ params }: any) => {
             "-26"}
         </h2>
         <div className="pr-5 flex flex-row justify-between">
-          <h1 className={`text-2xl font-extralight `}>${item.price}.00</h1>
+          <h1 className={`text-2xl font-extralight `}>€{item.price}.00</h1>
           <div className="mb-2 text-teal-500 pointer-events-none flex flex-col items-center ">
             <Rating rating={item.rating} />
             <span className="pt-1 text-xs text-gray-500">
@@ -74,16 +77,13 @@ const Product = ({ params }: any) => {
 
         <div className="border-t text-sm text-gray-700 py-5">
           <h1 className="mb-2">
-            <strong>Materiales:</strong> 100% algodón <br /> con relleno
-            siliconado
+            <strong>{t("materials")}:</strong> {t("materialText1")} <br />{" "}
+            {t("materialText2")}
           </h1>
           <h1 className="mb-2">
-            <strong>Tamaño Amigurumi:</strong> 26 cm
+            <strong>{t("size")}:</strong> 26 cm
           </h1>
-          <h1 className="">
-            Todos nuestros Amigurumis se enviarán de 10 a 15 días después de su
-            pago
-          </h1>
+          <h1 className="">{t("delivery")}</h1>
         </div>
 
         <div className="flex flex-row items-center ">
@@ -135,21 +135,21 @@ const Product = ({ params }: any) => {
             {cart.some((p) => p.name === item.name) ? (
               <button
                 onClick={() => dispatch(removeFromCart(item.name))}
-                className="bg-gradient-to-br from-pink-500 to-red-500 Xbg-pink-500 Xuppercase rounded-sm px-5 py-2 cursor-pointer active:animate-ping"
+                className="bg-gradient-to-br from-pink-500 to-red-500 Xbg-pink-500 Xuppercase rounded-sm px-4 py-2 cursor-pointer active:animate-ping"
               >
-                Quitar del carrito
+                {t("delete")}
               </button>
             ) : (
               <button
                 disabled={!item.inStock}
                 onClick={() => dispatch(addToCart({ ...item, qty }))}
-                className={`Xuppercase rounded-sm px-5 py-2 ${
+                className={`Xuppercase rounded-sm px-4 py-2 ${
                   item.inStock
                     ? "bg-gradient-to-br from-teal-500 to-indigo-500 Xbg-teal-500 cursor-pointer active:animate-ping"
                     : "bg-teal-500/70"
                 } `}
               >
-                {!item.inStock ? "Producto agotado" : "Agregar al carrito"}
+                {!item.inStock ? t("soldOut") : t("add")}
               </button>
             )}
           </div>
@@ -158,54 +158,7 @@ const Product = ({ params }: any) => {
 
       {/** DESCRIPTION */}
       <div className="p-10 text-xs border-t text-justify">
-        <h1 className="text-sm font-bold mb-5">Descripcion</h1>
-        <p>
-          Descubre nuestra colección de encantadores amigurumis hechos a mano
-          con materiales de alta calidad. <br /> Cada pieza es única y se
-          caracteriza por su cuidado diseño y atención a los detalles. <br />
-          <br /> Ten en cuenta que debido a su fabricación artesanal, puede
-          haber ligeras variaciones en tamaños y colores, lo que añade aún más
-          exclusividad a cada amigurumi. <br />
-          <br />
-          ¡Haz que la magia de los amigurumis cobre vida en tus manos! Material:
-          Algodón 100% de alta calidad. <br />
-          <br />
-          Tamaño Amigurumi: 26 cm. <br />
-          <br />
-          <strong>Instrucciones de cuidado:</strong> <br />
-          <br />
-          1️⃣ Usa agua tibia y un detergente suave. Evita productos agresivos que
-          puedan dañar las fibras del amigurumi. <br />
-          <br />
-          2️⃣ Lávalos a mano con delicadeza. Frota suavemente para eliminar la
-          suciedad sin deformar los detalles. <br />
-          <br />
-          3️⃣ Enjuaga bien para eliminar todo el detergente. Asegúrate de no
-          dejar residuos que puedan afectar la textura. <br />
-          <br />
-          4️⃣ Exprime suavemente para eliminar el exceso de agua, sin
-          retorcerlos. Un truco es envolverlos en una toalla absorbente y
-          presionar suavemente. <br />
-          <br />
-          5️⃣ Déjalos secar al aire libre, evitando la exposición directa al sol.
-          Puedes colocarlos sobre una toalla o rejilla para mantener su forma.{" "}
-          <br />
-          <br />
-          ¡Y listo! Tu amigurumi estará fresco y listo para más aventuras.{" "}
-          <br />
-          <br />
-          Recuerda que el cuidado adecuado prolongará su vida útil y mantendrá
-          su encanto. <br />
-          <br />
-          💕✨{" "}
-          <span className="font-bold text-sm">
-            Un patrón y diseño de ZLEN Desing
-          </span>
-          <br />
-          <br />
-          Todos nuestros Amigurumis se enviarán de 10 a 15 días después de su
-          pago
-        </p>
+        <Detail />
       </div>
 
       <Carrito />

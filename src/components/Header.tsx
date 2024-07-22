@@ -20,7 +20,7 @@ export const Header = () => {
   return (
     <section className="w-full bg-gray-100 flex flex-col items-center">
       <div className="relative w-full lg:max-w-[1024px] py-5 lg:flex lg:flex-row">
-        <div className="absolute z-10 top-2 right-2">
+        <div className="absolute z-10 top-2 left-2">
           <LocalSwitcher />
         </div>
 
@@ -161,7 +161,8 @@ export const Header = () => {
 
           <li className="flex p-3 border-b border-gray-300 lg:border-transparent whitespace-nowrap">
             <Link
-              href={`/${localeActive}#About`}
+              //href={`/${localeActive}#About`}
+              href={`/${localeActive}/about#view`}
               className=" p-1 active:animate-ping cursor-pointer"
             >
               {t("about")}
@@ -170,7 +171,7 @@ export const Header = () => {
 
           <li className="flex p-3 border-b border-gray-300 lg:border-transparent lg:pr-0">
             <Link
-              href={`/${localeActive}#Contac`}
+              href={`/${localeActive}/contact#view`}
               className=" p-1 active:animate-ping cursor-pointer"
             >
               {t("contact")}

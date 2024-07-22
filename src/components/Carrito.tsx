@@ -110,7 +110,7 @@ const Carrito = () => {
                         {t("quantity")}: {item.qty}
                       </h1>
                       <h1 className="tracking-wider">
-                        ${item.price * item.qty}
+                        €{item.price * item.qty}
                         .00
                       </h1>
                     </div>
@@ -142,7 +142,7 @@ const Carrito = () => {
             <div className="w-full p-5 border-t-2 bg-gray-200">
               <div className="text-base flex flex-row justify-between mb-1">
                 <h1 className="font-bold">{t("subTotal")}:</h1>
-                <h1 className="font-bold lining-nums">${subTotal}.00</h1>
+                <h1 className="font-bold lining-nums">€{subTotal}.00</h1>
               </div>
               <p className="text-xs text-gray-500 mb-5">{t("text1")}</p>
               <div className="text-xs text-center text-white flex flex-col">

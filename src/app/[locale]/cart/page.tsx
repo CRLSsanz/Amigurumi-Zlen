@@ -109,7 +109,7 @@ const Cart = () => {
                           {item.name}
                         </h1>
                         <h1 className="text-gray-600 text-xs mb-2 tracking-widest">
-                          ${item.price}.00
+                          €{item.price}.00
                         </h1>
                         <h1 className="hidden lg:block text-gray-600 text-xs">
                           Contenido: {item.category}
@@ -168,7 +168,7 @@ const Cart = () => {
                   </td>
 
                   <td className="py-5 pr-5 tracking-wider text-end align-top">
-                    <div className="">${item.price * item.qty}.00</div>
+                    <div className="">€{item.price * item.qty}.00</div>
                   </td>
                 </tr>
               ))}
@@ -189,7 +189,7 @@ const Cart = () => {
               <div className="w-full flex flex-row justify-between py-5 border-b border-gray-300">
                 <h1 className=" font-bold">{t("shipment")}:</h1>
                 <div className="flex flex-col text-end">
-                  <h1 className="">{t("fixedPrice")}: $8.00</h1>
+                  <h1 className="">{t("fixedPrice")}: € 8.00</h1>
                   <h1 className="mb-2">{t("sendTo")}</h1>
                   <h1 className="">{t("changeAddress")}</h1>
                 </div>
@@ -197,7 +197,7 @@ const Cart = () => {
 
               <div className="w-full text-base font-bold flex flex-row justify-between py-3">
                 <h1 className="font-bold">{t("total")}:</h1>
-                <h1 className="tracking-wider">${subTotal + 8}.00</h1>
+                <h1 className="tracking-wider">€{subTotal + 8}.00</h1>
               </div>
 
               <div className="w-full flex mb-3 px-4">

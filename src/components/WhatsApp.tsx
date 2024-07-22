@@ -19,7 +19,7 @@ const WhatsApp = ({ text, size }: any) => {
       (i) =>
         (message += "> " + i.qty + " %20 *" + i.name.replace("#", "n") + "*%0A")
     );
-    message += "%0ATOTAL: *$" + subTotal + ".00*";
+    message += "%0ATOTAL: *€" + subTotal + ".00*";
   }
 
   //href={`https://wa.me/51990441430?text=${message}`}

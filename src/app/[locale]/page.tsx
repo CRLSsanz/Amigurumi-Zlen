@@ -5,10 +5,12 @@ import Carrito from "@/components/Carrito";
 import WhatsApp from "@/components/WhatsApp";
 import SingleProduct from "@/components/SingleProduct";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import Link from "next/link";
 
 export default function Home() {
   const t = useTranslations("Main");
+  const localeActive = useLocale();
   const data = useAppSelector((state) => state.products);
 
   const { byCategory, byStock, searchQuery, sort, byRating, byA_Z } =
@@ -88,15 +90,18 @@ export default function Home() {
           <h1 className="hidden"> bgAvatar</h1>
         </div>
 
-        <p className="lg:max-w-[500px] px-5 text-xs text-center mb-5 leading-5">
+        <p className="lg:max-w-[500px] px-5 text-xs text-center mb-5 leading-6">
           {t("text1")}
         </p>
-        <p className="lg:max-w-[500px] px-5 text-xs text-center mb-10 leading-5">
+        <p className="lg:max-w-[500px] px-5 text-xs text-center mb-10 leading-6">
           {t("text2")}
         </p>
-        <h1 className="text-center text-sm bg-gradient-to-bl from-purple-600 to-pink-500 px-7 py-2 rounded-tl-md rounded-br-md rounded-3xl  text-white mb-20 cursor-pointer">
+        <Link
+          href={`/${localeActive}/about#view`}
+          className="text-center text-sm bg-gradient-to-bl from-purple-600 to-pink-500 px-7 py-2 rounded-tl-md rounded-br-md rounded-3xl  text-white mb-20 cursor-pointer"
+        >
           {t("button")}
-        </h1>
+        </Link>
       </div>
 
       {/** FILTER */}
@@ -107,10 +112,9 @@ export default function Home() {
         id="view"
         className="w-full lg:w-[1024px] p-5 lg:px-0 lg:grid lg:grid-cols-3 lg:gap-5"
       >
-        <div className="uppercase lg:col-span-3 mb-5 font-bold">
-          {byCategory === "" ? "Amigurumis " : byCategory} {" ("}
-          {filterData().length}
-          {")"}
+        <div className="uppercase text-xs lg:col-span-3 mb-10 font-bold text-gray-500">
+          {t("show1") + " "}
+          {filterData().length} {byCategory === "" ? "Amigurumis" : t("show2")}
         </div>
 
         {filterData().map((item, index) => (

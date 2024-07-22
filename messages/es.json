@@ -13,7 +13,9 @@
   "Main": {
     "text1": "¡Bienvenidos a nuestra tienda online de amigurumis únicos! Descubre una colección encantadora de adorables muñecos tejidos a mano con materiales de alta calidad. Sumérgete en un mundo lleno de color, ternura y creatividad, donde cada amigurumi es una pequeña obra de arte.",
     "text2": "Te invitamos a explorar nuestro catálogo y encontrar el compañero perfecto que alegrará tu vida o será el regalo ideal para alguien especial. ¡Prepárate para abrazar la dulzura de los amigurumis y desatar tu imaginación en nuestra tienda en línea!",
-    "button": "Saber mas de ZLEN"
+    "button": "Saber mas de ZLEN",
+    "show1": "Mostrando",
+    "show2": "Resultados"
   },
   "Filter": {
     "search": "Buscar amigurumi",
@@ -37,7 +39,7 @@
     "total": "Total",
     "shipment": "Envio",
     "fixedPrice": "Precio fijo",
-    "sendTo": "Enviar a Atlantico",
+    "sendTo": "Enviar a Italia",
     "changeAddress": "Cambiar direccion",
     "check1": "He leido y acepto las ",
     "check11": "Condicciones de venta",
@@ -46,8 +48,59 @@
   },
 
   "Product": {
+    "send": "Envio en 8 dias",
     "add": "Agregar al Carrito",
     "delete": "Remover del Carrito",
-    "soldOut": "Producto Agotado"
+    "soldOut": "Producto Agotado",
+    "code": "Codigo del producto",
+    "materials": "Materiales",
+    "materialText1": "100% algodón",
+    "materialText2": "con relleno siliconado",
+    "size": "Tamaño Amigurumi",
+    "delivery": "Todos nuestros Amigurumis se enviarán de 10 a 15 días después de su pago"
+  },
+
+  "Detail": {
+    "description": "Descripción",
+    "p1": "Descubre nuestra colección de encantadores amigurumis hechos a mano con materiales de alta calidad.",
+    "p2": "Cada pieza es única y se caracteriza por su cuidado diseño y atención a los detalles.",
+    "p3": "Ten en cuenta que debido a su fabricación artesanal, puede haber ligeras variaciones en tamaños y colores, lo que añade aún más exclusividad a cada amigurumi.",
+    "p4": "¡Haz que la magia de los amigurumis cobre vida en tus manos! Material: Algodón 100% de alta calidad.",
+
+    "instruction": "Instrucciones de cuidado:",
+    "ic1": "Usa agua tibia y un detergente suave. Evita productos agresivos que puedan dañar las fibras del amigurumi.",
+    "ic2": "Lávalos a mano con delicadeza. Frota suavemente para eliminar la suciedad sin deformar los detalles.",
+    "ic3": "Enjuaga bien para eliminar todo el detergente. Asegúrate de no dejar residuos que puedan afectar la textura.",
+    "ic4": "Exprime suavemente para eliminar el exceso de agua, sin retorcerlos. Un truco es envolverlos en una toalla absorbente y presionar suavemente.",
+    "ic5": "Déjalos secar al aire libre, evitando la exposición directa al sol. Puedes colocarlos sobre una toalla o rejilla para mantener su forma.",
+    "ip1": "¡Y listo! Tu amigurumi estará fresco y listo para más aventuras.",
+    "ip2": "Recuerda que el cuidado adecuado prolongará su vida útil y mantendrá su encanto.",
+    "ip3": "Un patrón y diseño de ZLEN",
+    "ip4": "Todos nuestros Amigurumis se enviarán de 10 a 15 días después de su pago"
+  },
+
+  "About": {
+    "title1": "Sobre nosotros",
+    "text1": "ZLEN es una empresa virtual que se dedica a la elaboración y comercialización de muñecos hechos a mano en crochet y busca potencializarse en el sector artesanal generando valor agregado a través de la calidad de sus productos.",
+    "title2": "Nuestra Historia",
+    "text2": "ZLEN nació en el año 2023 y fue fundado por Zoe Valentina, con el objetivo principal de ser una importante opción en productos de juguetería para niños y ambientación de espacios tanto de niños como adultos, mediante productos de calidad garantizada y amplia variedad de referencias, buscando despertar la sensibilidad, el amor y la satisfacción de nuestros clientes.",
+    "text3": "Los Amigurumis ZLEN son muñecos hechos a mano con materiales 100% de alta calidad amigables con el medio ambiente, diseñados bajo la metodología crochet. Zlen crea muñecos tejidos con amor, para niños, jóvenes y adultos, un producto artesanal con la convicción de llamar la atención del cliente, un producto de alta calidad para el mercado, exaltando el amor y dedicación que le ponen a cada uno en la parte de producción, un producto 100% hecho a mano al gusto de todo el público."
+  },
+
+  "Contact": {
+    "title": "Contacto",
+    "text": "Si tiene alguna duda o sugerencia acerca de ZLEN o de alguno de los productos, o si tiene algún problema con su pedido o el sitio web, escríbe a hola@amigurumiszlen.co o al WhatsApp 393801836002 estaré encantado de atenderle."
+  },
+
+  "Footer": {
+    "made": "hecho a mano",
+    "contact": "Contacto",
+    "termsConditions": "Terminos y condiciones",
+    "privacyPolicies": "Politicas de privacidad",
+    "shippingPolicy": "Politica de envio",
+    "questions": "Preguntas frecuentes",
+    "subscrive": "Suscribete y recibe noticias sobre amigurumis ZLEN!",
+    "send": "Suscribete",
+    "crochet": "Crochet | Hecho a mano | Para grandes y pequeños"
   }
 }

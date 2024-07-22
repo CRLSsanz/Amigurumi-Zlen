@@ -80,9 +80,9 @@ const SingleProduct = ({ prod }: any) => {
           </span>
         </div>
         <h1 className={` Xtext-teal-600 whitespace-nowrap Xtext-teal-600`}>
-          {/** price.split(".")[0] */}$ {prod.price}.00
+          {/** price.split(".")[0] */}€ {prod.price}.00
         </h1>
-        <h1 className="text-xs text-gray-500 mb-2 ">Delivery 8 days</h1>
+        <h1 className="text-xs text-gray-500 mb-2 ">{t("send")}</h1>
         <div className="flex flex-row items-center justify-between">
           <div className="text-white text-sm font-bold ">
             {cart.some((p) => p.name === prod.name) ? (
