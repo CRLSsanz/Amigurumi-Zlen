@@ -20,7 +20,7 @@ export const Header = () => {
   return (
     <section className="w-full bg-gray-100 flex flex-col items-center">
       <div className="relative w-full lg:max-w-[1024px] py-5 lg:flex lg:flex-row">
-        <div className="absolute z-10 top-2 left-2">
+        <div className="absolute -rotate-90 z-10 top-10 -left-5 flex flex-row">
           <LocalSwitcher />
         </div>
 

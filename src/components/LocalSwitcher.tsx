@@ -16,11 +16,11 @@ const LocalSwitcher = () => {
   };
 
   return (
-    <div className="w-20 Xborder Xborder-gray-300 text-gray-500 rounded">
+    <div className="w-20 Xborder Xborder-gray-300 text-gray-400 rounded">
       <p className="hidden Xsr-only">Change Language</p>
       <select
         defaultValue={localeActive}
-        className="text-sm bg-transparent py-2 pl-2 cursor-pointer"
+        className="text-sm text-center bg-transparent py-2 pl-2 cursor-pointer"
         onChange={changeLanguage}
         disabled={isPending}
       >

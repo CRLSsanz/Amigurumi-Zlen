@@ -40,7 +40,6 @@ const Product = ({ params }: any) => {
     <div className="" id="view">
       <div className="flex w-full bg-gray-200">
         <Image
-          //src={require("/public/image/boy2.jpg")}
           src={require(`/public/image/${item.image}`)}
           alt="Amigurumi"
           //fill

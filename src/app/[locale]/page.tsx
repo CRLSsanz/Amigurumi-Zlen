@@ -105,7 +105,9 @@ export default function Home() {
       </div>
 
       {/** FILTER */}
-      <Filter />
+      <div id="filter" className="w-full">
+        <Filter />
+      </div>
 
       {/** LIST <img src={`./image/${item.name}.jpg`} alt="" /> */}
       <div
@@ -121,6 +123,32 @@ export default function Home() {
           <SingleProduct prod={item} key={index} />
         ))}
       </div>
+
+      {/** UP TO FILTER */}
+      <Link
+        href={`/${localeActive}#filter`}
+        className="mb-10 p-2 text-gray-500 animate-bounce"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="size-6"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="m4.5 18.75 7.5-7.5 7.5 7.5"
+          />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="m4.5 12.75 7.5-7.5 7.5 7.5"
+          />
+        </svg>
+      </Link>
 
       {/** WHATSAPP */}
       <div className="fixed bottom-3 right-3 bg-green-500 hover:bg-emerald-500 shadow-md shadow-black rounded-full p-1.5">
