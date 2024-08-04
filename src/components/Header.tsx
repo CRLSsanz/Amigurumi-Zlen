@@ -20,7 +20,7 @@ export const Header = () => {
   return (
     <section className="w-full bg-gray-100 flex flex-col items-center">
       <div className="relative w-full lg:max-w-[1024px] py-5 lg:flex lg:flex-row">
-        <div className="absolute -rotate-90 z-10 top-10 -left-5 flex flex-row">
+        <div className="absolute -rotate-90 lg:-rotate-0 z-10 top-10 -left-5 lg:left-[100px] lg:top-[115px] flex flex-row">
           <LocalSwitcher />
         </div>
 
@@ -50,7 +50,7 @@ export const Header = () => {
             <h1 className="text-xl font-bold tracking-widest text-gray-800">
               ZLEN
             </h1>
-            <h1 className=" w-36 text-gray-500 xuppercase tracking-widest text-xs">
+            <h1 className=" w-36 lg:w-48 text-gray-500 xuppercase tracking-widest text-xs">
               {t("title")}
             </h1>
           </div>
@@ -94,7 +94,7 @@ export const Header = () => {
 
           <div
             hidden={!showList}
-            className="lg:absolute top-20 left-5 lg:bg-gray-100 lg:shadow-lg lg:shadow-black "
+            className="lg:absolute top-20 left-5 lg:bg-gray-100 lg:z-50 lg:shadow-lg lg:shadow-black "
           >
             <li className="flex p-3 pl-5 border-b border-gray-300 ">
               <Link
@@ -163,6 +163,7 @@ export const Header = () => {
             <Link
               //href={`/${localeActive}#About`}
               href={`/${localeActive}/about#view`}
+              onClick={() => setShowList(false)}
               className=" p-1 active:animate-ping cursor-pointer"
             >
               {t("about")}
@@ -172,6 +173,7 @@ export const Header = () => {
           <li className="flex p-3 border-b border-gray-300 lg:border-transparent lg:pr-0">
             <Link
               href={`/${localeActive}/contact#view`}
+              onClick={() => setShowList(false)}
               className=" p-1 active:animate-ping cursor-pointer"
             >
               {t("contact")}

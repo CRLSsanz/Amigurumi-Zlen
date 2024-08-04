@@ -4,7 +4,7 @@ import React from "react";
 const Footer = () => {
   const t = useTranslations("Footer");
   return (
-    <div className="">
+    <div className="flex flex-col items-center">
       {/** FOOTER */}
       <div className="border-t w-full lg:max-w-[1024px] text-sm  py-10 flex flex-col items-center">
         <div className="w-24 h-24 border-2 border-gray-600 rounded-full flex items-center justify-center mb-10 ">
@@ -14,7 +14,7 @@ const Footer = () => {
           </h1>
         </div>
 
-        <div className="lg:grid lg:grid-cols-4 lg:gap-5">
+        <div className="lg:grid lg:grid-cols-4 lg:gap-10">
           <div className="text-center mb-5">
             <h1 className="font-bold py-3">{t("contact")}</h1>
             <h1>+39 380 183 6002</h1>

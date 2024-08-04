@@ -65,7 +65,7 @@ const Cart = () => {
             <thead>
               <tr className="text-[9px] uppercase tracking-widest border-b text-gray-400 ">
                 <th className="py-4 pl-5 text-start">{t("product")}</th>
-                <th className="py-4 pr-5 text-end text-transparent lg:text-gray-400">
+                <th className="py-4 pr-5 text-end lg:pr-[72px] text-transparent lg:text-gray-400">
                   {t("quantity")}
                 </th>
                 <th className="py-4 pr-5 text-end Xbg-red-200">
@@ -245,11 +245,13 @@ const Cart = () => {
         </div>
       </div>
 
-      <Link href="/#view" className="w-full flex px-5 mb-10">
-        <h1 className="w-full text-center text-sm py-2 mb-5 border border-gray-500 active:bg-teal-400 active:text-white active:border-transparent rounded-sm">
-          {t("continueShopping")}
-        </h1>
-      </Link>
+      <div className="flex flex-col items-center lg:pt-10">
+        <Link href="/#view" className="w-full lg:w-[400px] flex px-5 mb-10">
+          <h1 className="w-full text-center text-sm py-2 mb-5 border border-gray-500 active:bg-teal-400 active:text-white active:border-transparent rounded-sm">
+            {t("continueShopping")}
+          </h1>
+        </Link>
+      </div>
     </section>
   );
 };
