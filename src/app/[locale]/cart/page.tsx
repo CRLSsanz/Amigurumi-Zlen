@@ -6,11 +6,12 @@ import Link from "next/link";
 import Image from "next/image";
 import WhatsApp from "@/components/WhatsApp";
 import { usePathname } from "next/navigation";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 const Cart = () => {
   const [subTotal, setSubTotal] = useState(0);
   const t = useTranslations("Cart");
+  const localeActive = useLocale();
 
   const pathname = usePathname().substr(0, 3);
 
@@ -23,19 +24,21 @@ const Cart = () => {
 
   if (cart.length === 0)
     return (
-      <div className="w-full mb-40">
-        <h1 className="font-bold p-5">{t("title")}</h1>
-        <div className="uppercase text-[10px] tracking-widest w-full border-b text-gray-400 py-4 pl-5 mb-5">
-          {t("cartEmpty")}
+      <div className="flex flex-col items-center">
+        <div className="w-full lg:w-[1024px] mb-40">
+          <h1 className="font-bold p-5">{t("title")}</h1>
+          <div className="uppercase text-[10px] tracking-widest w-full border-b text-gray-400 py-4 pl-5 mb-5">
+            {t("cartEmpty")}
+          </div>
+          <Link
+            href={`/${localeActive}#view`}
+            className="flex lg:w-[300px] p-2 mx-5 bg-gradient-to-br from-teal-500 to-indigo-500  rounded-full"
+          >
+            <h1 className="w-full text-sm text-center text-white">
+              {t("continueShopping")}
+            </h1>
+          </Link>
         </div>
-        <Link
-          href="/#view"
-          className="flex p-2 mx-5 bg-gradient-to-br from-teal-500 to-indigo-500  rounded-full"
-        >
-          <h1 className="w-full text-sm text-center text-white">
-            {t("continueShopping")}
-          </h1>
-        </Link>
       </div>
     );
 
@@ -245,8 +248,11 @@ const Cart = () => {
         </div>
       </div>
 
-      <div className="flex flex-col items-center lg:pt-10">
-        <Link href="/#view" className="w-full lg:w-[400px] flex px-5 mb-10">
+      <div className="w-full lg:flex lg:flex-col lg:items-center lg:pt-10">
+        <Link
+          href={`/${localeActive}#view`}
+          className="w-full lg:w-[400px] flex px-5 mb-10"
+        >
           <h1 className="w-full text-center text-sm py-2 mb-5 border border-gray-500 active:bg-teal-400 active:text-white active:border-transparent rounded-sm">
             {t("continueShopping")}
           </h1>
